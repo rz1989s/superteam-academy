@@ -18,17 +18,21 @@ const TRACK_META: Record<Track, { label: string; gradient: string }> = {
     label: 'Solana Core',
     gradient: 'from-clay-deep to-brown',
   },
+  // Each track leads with a distinct dark brand hue (amber / cyan / red / green)
+  // that clears WCAG 3:1 against the overlaid white text + icons (large content).
+  // #C75A44 is the brand muted-red as an arbitrary value (`--color-red` is
+  // intentionally undefined to avoid overriding Tailwind's red scale).
   defi: {
     label: 'DeFi',
-    gradient: 'from-blue-600 to-teal-600',
+    gradient: 'from-link to-brown',
   },
   nft: {
     label: 'NFT',
-    gradient: 'from-pink-600 to-orange-500',
+    gradient: 'from-[#C75A44] to-clay-deep',
   },
   security: {
     label: 'Security',
-    gradient: 'from-orange-600 to-yellow-600',
+    gradient: 'from-green-deep to-clay-deep',
   },
 };
 
