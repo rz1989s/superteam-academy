@@ -18,6 +18,15 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
+/** rectorspace-signature gold section divider, constrained to the content width. */
+function SectionDivider() {
+  return (
+    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="border-t-2 border-gold/60" />
+    </div>
+  );
+}
+
 export default function HomePage() {
   return (
     <>
@@ -28,11 +37,13 @@ export default function HomePage() {
         }}
       />
       <HeroSection />
+      <SectionDivider />
       <FeaturedCourses />
       <HowItWorks />
       <TracksOverview />
       <GamificationPreview />
       <SocialProof />
+      <SectionDivider />
       <CtaBanner />
     </>
   );
