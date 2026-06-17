@@ -16,7 +16,7 @@ interface ResultsStepProps {
 const TRACK_META: Record<Track, { label: string; gradient: string }> = {
   'solana-core': {
     label: 'Solana Core',
-    gradient: 'from-purple-600 to-indigo-700',
+    gradient: 'from-clay-deep to-brown',
   },
   defi: {
     label: 'DeFi',

@@ -26,7 +26,7 @@ interface CreatorCourse {
 
 const STATUS_STYLES: Record<CourseStatus, string> = {
   active: 'bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border-emerald-500/25',
-  draft: 'bg-slate-500/15 text-slate-600 dark:text-slate-400 border-slate-500/25',
+  draft: 'bg-muted text-muted-foreground border-border',
 };
 
 const MOCK_COURSES: CreatorCourse[] = [

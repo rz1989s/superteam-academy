@@ -190,7 +190,7 @@ export function AccountExplorer({ className }: AccountExplorerProps) {
         id: 'config',
         title: 'Program Config',
         icon: Settings,
-        iconColor: 'text-slate-500',
+        iconColor: 'text-muted-foreground',
         accounts: [
           { label: 'Config', address: configAddr.toBase58(), bump: configBump },
         ],

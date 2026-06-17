@@ -27,7 +27,7 @@ const CATEGORY_STYLES: Record<ThreadCategory, { label: string; className: string
   },
   ideas: {
     label: 'Ideas',
-    className: 'bg-violet-100 text-violet-700 dark:bg-violet-950 dark:text-violet-400',
+    className: 'bg-skyblue/10 text-link dark:bg-skyblue/15 dark:text-skyblue',
   },
 };
 
