@@ -27,6 +27,12 @@ test.describe('Course Catalog', () => {
     // The page should either show course cards OR an empty state message.
     // In a static/mock environment, the store starts empty, so we expect
     // the empty state or cards depending on whether mock data is seeded.
+    // Wait for the catalog to finish loading first: the skeleton placeholders
+    // resolve into either real course cards or the empty state. Counting
+    // synchronously right after navigate() races that async load under
+    // parallel runs (skeletons match neither locator → false negative).
+    await expect(courses.courseCards.first().or(courses.emptyState)).toBeVisible();
+
     const cardsCount = await courses.courseCards.count();
     const emptyVisible = await courses.emptyState.isVisible().catch(() => false);
 
