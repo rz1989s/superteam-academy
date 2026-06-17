@@ -25,7 +25,7 @@ export class LandingPage {
     this.connectWalletButton = page.getByRole('button', { name: /connect wallet/i });
     this.header = page.locator('header');
     this.footer = page.locator('footer[role="contentinfo"]');
-    this.headerLogo = page.getByLabel('Superteam Academy home').first();
+    this.headerLogo = page.getByLabel('RECTOR Academy home').first();
     this.headerNavLinks = page.locator('nav[aria-label="Main navigation"] a');
     this.footerPlatformLinks = page.locator('footer a');
     this.stats = page.locator('section[aria-labelledby="hero-heading"]').locator('.flex.items-center.gap-2\\.5');

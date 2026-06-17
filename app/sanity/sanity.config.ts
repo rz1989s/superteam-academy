@@ -4,8 +4,8 @@ import { visionTool } from '@sanity/vision';
 import { schemaTypes } from './schemas';
 
 export default defineConfig({
-  name: 'superteam-academy',
-  title: 'Superteam Academy',
+  name: 'rector-academy',
+  title: 'RECTOR Academy',
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'placeholder',
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || 'production',
   plugins: [structureTool(), visionTool()],
