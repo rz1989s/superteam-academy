@@ -14,7 +14,7 @@ export function CtaBanner() {
       aria-labelledby="cta-heading"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary via-primary/90 to-accent p-8 sm:p-12 lg:p-16">
+        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-brown via-brown to-link p-8 sm:p-12 lg:p-16">
           {/* Decorative elements */}
           <div className="absolute -right-16 -top-16 h-64 w-64 rounded-full bg-white/5 blur-2xl" />
           <div className="absolute -bottom-16 -left-16 h-48 w-48 rounded-full bg-white/5 blur-2xl" />
@@ -48,7 +48,7 @@ export function CtaBanner() {
             <div className="mt-2 flex flex-wrap items-center justify-center gap-4">
               <Button
                 size="lg"
-                className="gap-2 bg-white text-primary hover:bg-white/90"
+                className="gap-2 bg-white text-brown hover:bg-white/90"
                 asChild
               >
                 <Link href="/courses">
