@@ -133,6 +133,10 @@
   --color-link: #0D7390; /* links / cyan text — 5.07:1 on cream */
   --color-green-deep: #3C6A12; /* green stat text — 6.02:1 on cream */
   --color-clay-deep: #8A4A12; /* gold/amber badge text — 6.40:1 on cream */
+
+  /* muted-red brand accent — named 'rust' to avoid colliding with Tailwind's red-* scale */
+  --color-rust: #C75A44; /* decorative fill: Security track, Advanced difficulty, podium 3rd */
+  --color-rust-deep: #A23B22; /* readable muted-red TEXT on cream — 6.17:1 (AA) */
 }
 
 @layer base {
