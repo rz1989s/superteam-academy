@@ -3,6 +3,8 @@
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
+import { cn } from '@/lib/utils';
+import { getTrack, type TrackId } from '@/lib/tracks';
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -11,15 +13,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import {
-  ArrowRight,
-  BookOpen,
-  Code2,
-  Layers,
-  Shield,
-  Zap,
-} from 'lucide-react';
+import { ArrowRight, BookOpen, Zap } from 'lucide-react';
 
 interface CourseCardData {
   title: string;
@@ -27,11 +21,7 @@ interface CourseCardData {
   difficulty: 'Beginner' | 'Intermediate' | 'Advanced';
   lessons: number;
   xp: number;
-  track: string;
-  trackColor: string;
-  gradientFrom: string;
-  gradientTo: string;
-  icon: React.ElementType;
+  trackId: TrackId;
   slug: string;
   image: string;
 }
@@ -43,11 +33,7 @@ const FEATURED_COURSES: CourseCardData[] = [
     difficulty: 'Beginner',
     lessons: 5,
     xp: 250,
-    track: 'Solana Core',
-    trackColor: 'bg-primary/10 text-primary',
-    gradientFrom: 'from-primary/20',
-    gradientTo: 'to-primary/5',
-    icon: Layers,
+    trackId: '1',
     slug: 'solana-101',
     image: '/images/courses/solana-101.svg',
   },
@@ -57,11 +43,7 @@ const FEATURED_COURSES: CourseCardData[] = [
     difficulty: 'Intermediate',
     lessons: 8,
     xp: 600,
-    track: 'DeFi',
-    trackColor: 'bg-accent/10 text-accent',
-    gradientFrom: 'from-accent/20',
-    gradientTo: 'to-accent/5',
-    icon: Code2,
+    trackId: '2',
     slug: 'defi-201',
     image: '/images/courses/defi-201.svg',
   },
@@ -71,11 +53,7 @@ const FEATURED_COURSES: CourseCardData[] = [
     difficulty: 'Intermediate',
     lessons: 7,
     xp: 525,
-    track: 'NFT & Metaplex',
-    trackColor: 'bg-yellow-500/10 text-yellow-600 dark:text-yellow-400',
-    gradientFrom: 'from-yellow-500/20',
-    gradientTo: 'to-yellow-500/5',
-    icon: BookOpen,
+    trackId: '3',
     slug: 'nft-201',
     image: '/images/courses/nft-201.svg',
   },
@@ -85,20 +63,16 @@ const FEATURED_COURSES: CourseCardData[] = [
     difficulty: 'Advanced',
     lessons: 8,
     xp: 800,
-    track: 'Security',
-    trackColor: 'bg-red-500/10 text-red-600 dark:text-red-400',
-    gradientFrom: 'from-red-500/20',
-    gradientTo: 'to-red-500/5',
-    icon: Shield,
+    trackId: '4',
     slug: 'sec-301',
     image: '/images/courses/sec-301.svg',
   },
 ];
 
-const DIFFICULTY_VARIANT: Record<CourseCardData['difficulty'], 'secondary' | 'default' | 'destructive'> = {
-  Beginner: 'secondary',
-  Intermediate: 'default',
-  Advanced: 'destructive',
+const DIFFICULTY_CLASS: Record<CourseCardData['difficulty'], string> = {
+  Beginner: 'bg-leaf/20 text-green-deep',
+  Intermediate: 'bg-gold/20 text-clay-deep',
+  Advanced: 'bg-rust/15 text-rust-deep',
 };
 
 export function FeaturedCourses() {
@@ -112,10 +86,10 @@ export function FeaturedCourses() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <div className="flex flex-col items-center gap-4 text-center">
-          <Badge variant="outline" className="gap-1.5">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-secondary px-3 py-1 text-xs font-medium uppercase tracking-wider text-muted-foreground">
             <BookOpen className="h-3.5 w-3.5" />
             Curated Curriculum
-          </Badge>
+          </span>
           <h2
             id="featured-courses-heading"
             className="text-3xl font-bold tracking-tight sm:text-4xl"
@@ -130,71 +104,84 @@ export function FeaturedCourses() {
 
         {/* Course grid */}
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {FEATURED_COURSES.map((course) => (
-            <Link
-              key={course.title}
-              href={`/courses/${course.slug}`}
-              className="group block"
-            >
-              <Card className="relative overflow-hidden transition-shadow hover:shadow-lg hover:border-primary/20 dark:hover:border-primary/30 group-hover:scale-[1.01] transition-all duration-200">
-                {/* Gradient image placeholder */}
-                <div
-                  className={`h-32 bg-gradient-to-br ${course.gradientFrom} ${course.gradientTo} relative flex items-center justify-center overflow-hidden`}
-                >
-                  {course.image ? (
-                    <Image
-                      src={course.image}
-                      alt=""
-                      width={800}
-                      height={128}
-                      className="absolute inset-0 h-full w-full object-cover"
-                      unoptimized
-                    />
-                  ) : (
-                    <course.icon className="h-10 w-10 text-foreground/20" />
-                  )}
-                  {/* XP badge */}
-                  <div className="absolute right-3 top-3 flex items-center gap-1 rounded-full bg-background/90 px-2.5 py-1 text-xs font-medium backdrop-blur-sm">
-                    <Zap className="h-3 w-3 text-accent" />
-                    {course.xp.toLocaleString()} XP
+          {FEATURED_COURSES.map((course) => {
+            const track = getTrack(course.trackId);
+            return (
+              <Link
+                key={course.title}
+                href={`/courses/${course.slug}`}
+                className="group block h-full"
+              >
+                <Card className="relative h-full overflow-hidden border-2 border-brown/10 transition-all duration-200 hover:border-skyblue/30 hover:shadow-md group-hover:scale-[1.01]">
+                  {/* Gradient image placeholder */}
+                  <div
+                    className={cn(
+                      'relative flex h-32 items-center justify-center overflow-hidden bg-gradient-to-br',
+                      track.tintGradient,
+                    )}
+                  >
+                    {course.image ? (
+                      <Image
+                        src={course.image}
+                        alt=""
+                        width={800}
+                        height={128}
+                        className="absolute inset-0 h-full w-full object-cover"
+                        unoptimized
+                      />
+                    ) : (
+                      <track.Icon className="h-10 w-10 text-foreground/20" />
+                    )}
+                    {/* XP badge */}
+                    <div className="absolute right-3 top-3 flex items-center gap-1 rounded-full bg-background/90 px-2.5 py-1 text-xs font-medium backdrop-blur-sm">
+                      <Zap className="h-3 w-3 text-clay-deep" />
+                      {course.xp.toLocaleString()} XP
+                    </div>
                   </div>
-                </div>
 
-                <CardHeader className="pb-2">
-                  <div className="flex flex-wrap items-center gap-2">
-                    <Badge
-                      variant={DIFFICULTY_VARIANT[course.difficulty]}
-                      className="text-[10px]"
-                    >
-                      {course.difficulty}
-                    </Badge>
-                    <span className={`rounded-full px-2 py-0.5 text-[10px] font-medium ${course.trackColor}`}>
-                      {course.track}
+                  <CardHeader className="pb-2">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span
+                        className={cn(
+                          'rounded-full px-2.5 py-0.5 text-[10px] font-semibold',
+                          DIFFICULTY_CLASS[course.difficulty],
+                        )}
+                      >
+                        {course.difficulty}
+                      </span>
+                      <span
+                        className={cn(
+                          'rounded-full px-2 py-0.5 text-[10px] font-medium',
+                          track.badgeClass,
+                        )}
+                      >
+                        {track.name}
+                      </span>
+                    </div>
+                    <CardTitle className="line-clamp-2 text-base">
+                      {course.title}
+                    </CardTitle>
+                  </CardHeader>
+
+                  <CardContent className="pb-2">
+                    <p className="line-clamp-2 text-sm text-muted-foreground">
+                      {course.description}
+                    </p>
+                    <p className="mt-3 text-xs text-muted-foreground">
+                      {course.lessons} lessons
+                    </p>
+                  </CardContent>
+
+                  <CardFooter>
+                    <span className="inline-flex w-full items-center justify-center gap-1.5 rounded-md px-3 py-2 text-sm font-medium text-primary">
+                      Start Course
+                      <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
                     </span>
-                  </div>
-                  <CardTitle className="line-clamp-2 text-base">
-                    {course.title}
-                  </CardTitle>
-                </CardHeader>
-
-                <CardContent className="pb-2">
-                  <p className="line-clamp-2 text-sm text-muted-foreground">
-                    {course.description}
-                  </p>
-                  <p className="mt-3 text-xs text-muted-foreground">
-                    {course.lessons} lessons
-                  </p>
-                </CardContent>
-
-                <CardFooter>
-                  <span className="inline-flex w-full items-center justify-center gap-1.5 rounded-md px-3 py-2 text-sm font-medium text-primary">
-                    Start Course
-                    <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
-                  </span>
-                </CardFooter>
-              </Card>
-            </Link>
-          ))}
+                  </CardFooter>
+                </Card>
+              </Link>
+            );
+          })}
         </div>
 
         {/* View all link */}
