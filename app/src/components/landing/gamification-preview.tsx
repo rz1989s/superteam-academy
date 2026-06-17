@@ -34,32 +34,32 @@ const ACHIEVEMENT_BADGES: AchievementBadge[] = [
     title: 'First Lesson',
     description: 'Complete your first lesson',
     icon: Star,
-    color: 'text-yellow-500',
-    bg: 'bg-yellow-500/10',
+    color: 'text-clay-deep',
+    bg: 'bg-gold/20',
     earned: true,
   },
   {
     title: 'Week Warrior',
     description: '7-day learning streak',
     icon: Flame,
-    color: 'text-orange-500',
-    bg: 'bg-orange-500/10',
+    color: 'text-clay-deep',
+    bg: 'bg-clay/15',
     earned: true,
   },
   {
     title: 'DeFi Builder',
     description: 'Complete the DeFi track',
     icon: Trophy,
-    color: 'text-primary',
-    bg: 'bg-primary/10',
+    color: 'text-link',
+    bg: 'bg-skyblue/10',
     earned: true,
   },
   {
     title: 'Bug Hunter',
     description: 'Find 5 vulnerabilities',
     icon: Shield,
-    color: 'text-red-500',
-    bg: 'bg-red-500/10',
+    color: 'text-rust-deep',
+    bg: 'bg-rust/15',
     earned: false,
   },
 ];
@@ -78,10 +78,10 @@ export function GamificationPreview() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <div className="flex flex-col items-center gap-4 text-center">
-          <Badge variant="outline" className="gap-1.5">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-secondary px-3 py-1 text-xs font-medium uppercase tracking-wider text-muted-foreground">
             <Target className="h-3.5 w-3.5" />
             Gamified Learning
-          </Badge>
+          </span>
           <h2
             id="gamification-heading"
             className="text-3xl font-bold tracking-tight sm:text-4xl"
@@ -98,12 +98,12 @@ export function GamificationPreview() {
           {/* Left column: XP + Level + Streak */}
           <div className="flex flex-col gap-6">
             {/* XP Progress card */}
-            <Card>
+            <Card className="border-2 border-brown/10">
               <CardContent className="pt-6">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
-                      <Zap className="h-6 w-6 text-primary" />
+                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gold/15">
+                      <Zap className="h-6 w-6 text-clay-deep" />
                     </div>
                     <div>
                       <p className="text-2xl font-bold">{MOCK_XP.toLocaleString()} XP</p>
@@ -114,7 +114,7 @@ export function GamificationPreview() {
                   </div>
                   {/* Level badge */}
                   <div className="flex flex-col items-center gap-1">
-                    <div className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-primary to-accent text-lg font-bold text-white">
+                    <div className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-link to-brown text-lg font-bold text-white">
                       {MOCK_LEVEL}
                     </div>
                     <span className="text-xs font-medium text-muted-foreground">
@@ -132,11 +132,11 @@ export function GamificationPreview() {
             </Card>
 
             {/* Streak counter */}
-            <Card>
+            <Card className="border-2 border-brown/10">
               <CardContent className="pt-6">
                 <div className="flex items-center gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-orange-500/10">
-                    <Flame className="h-6 w-6 text-orange-500" />
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-clay/15">
+                    <Flame className="h-6 w-6 text-clay-deep" />
                   </div>
                   <div className="flex-1">
                     <div className="flex items-baseline gap-2">
@@ -154,9 +154,9 @@ export function GamificationPreview() {
                         key={i}
                         className={`h-6 w-2 rounded-full ${
                           i < 5
-                            ? 'bg-accent'
+                            ? 'bg-leaf'
                             : i === 5
-                              ? 'bg-accent/50'
+                              ? 'bg-leaf/50'
                               : 'bg-muted'
                         }`}
                       />
@@ -167,8 +167,8 @@ export function GamificationPreview() {
             </Card>
 
             {/* Credential NFT mockup */}
-            <Card className="overflow-hidden">
-              <div className="bg-gradient-to-br from-primary via-primary/80 to-accent p-6">
+            <Card className="overflow-hidden border-2 border-brown/10">
+              <div className="bg-gradient-to-br from-link via-link/90 to-brown p-6">
                 <div className="flex items-start justify-between">
                   <div>
                     <p className="text-xs font-medium text-white/70">
@@ -212,7 +212,7 @@ export function GamificationPreview() {
               {ACHIEVEMENT_BADGES.map((badge) => (
                 <Card
                   key={badge.title}
-                  className={`transition-opacity ${!badge.earned ? 'opacity-50' : ''}`}
+                  className={`border-2 border-brown/10 transition-opacity ${!badge.earned ? 'opacity-50' : ''}`}
                 >
                   <CardContent className="flex flex-col items-center gap-3 pt-6 text-center">
                     <div
@@ -241,7 +241,7 @@ export function GamificationPreview() {
             </div>
 
             {/* Mini leaderboard preview */}
-            <Card>
+            <Card className="border-2 border-brown/10">
               <CardContent className="pt-6">
                 <h3 className="mb-4 text-sm font-semibold">Top Learners</h3>
                 <div className="flex flex-col gap-3">
@@ -257,10 +257,10 @@ export function GamificationPreview() {
                       <span
                         className={`flex h-7 w-7 items-center justify-center rounded-full text-xs font-bold ${
                           entry.rank === 1
-                            ? 'bg-yellow-500/20 text-yellow-600 dark:text-yellow-400'
+                            ? 'bg-gold/20 text-clay-deep'
                             : entry.rank === 2
-                              ? 'bg-gray-300/20 text-gray-600 dark:text-gray-300'
-                              : 'bg-orange-500/20 text-orange-600 dark:text-orange-400'
+                              ? 'bg-clay/15 text-clay-deep'
+                              : 'bg-rust/15 text-rust-deep'
                         }`}
                       >
                         {entry.rank}
