@@ -181,7 +181,7 @@ export class MockLearningProgressService implements LearningProgressService {
         uri: 'https://arweave.net/mock-uri-001',
         imageUrl: 'https://arweave.net/mock-image-001',
         owner: _walletAddress,
-        collection: 'superteam-academy-v1',
+        collection: 'rector-academy-v1',
         frozen: false,
         attributes: {
           trackId: 1,
@@ -197,7 +197,7 @@ export class MockLearningProgressService implements LearningProgressService {
         uri: 'https://arweave.net/mock-uri-002',
         imageUrl: 'https://arweave.net/mock-image-002',
         owner: _walletAddress,
-        collection: 'superteam-academy-v1',
+        collection: 'rector-academy-v1',
         frozen: false,
         attributes: {
           trackId: 2,

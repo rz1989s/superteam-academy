@@ -220,7 +220,7 @@ describe('User Store — updateStreak', () => {
   it('persists streak to localStorage', () => {
     useUserStore.getState().updateStreak();
     expect(localStorageMock.setItem).toHaveBeenCalledWith(
-      'superteam-streak',
+      'rector-academy-streak',
       expect.any(String),
     );
     const stored = JSON.parse(localStorageMock.setItem.mock.calls[0]![1]!);
@@ -401,7 +401,7 @@ describe('User Store — reset', () => {
 
     useUserStore.getState().reset();
     expect(localStorageMock.setItem).toHaveBeenCalledWith(
-      'superteam-streak',
+      'rector-academy-streak',
       JSON.stringify({
         currentStreak: 0,
         longestStreak: 0,

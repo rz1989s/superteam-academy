@@ -24,7 +24,7 @@ import { WalletSettings } from '@/components/settings/wallet-settings';
 import { AccountLinks } from '@/components/settings/account-links';
 import { DangerZone } from '@/components/settings/danger-zone';
 
-const PROFILE_KEY = 'superteam-profile';
+const PROFILE_KEY = 'rector-academy-profile';
 
 interface SocialLinks {
   twitter: string;
@@ -101,7 +101,7 @@ function collectLocalStorageData(): Record<string, unknown> {
   try {
     for (let i = 0; i < localStorage.length; i++) {
       const key = localStorage.key(i);
-      if (!key?.startsWith('superteam-')) continue;
+      if (!key?.startsWith('rector-academy-')) continue;
       try {
         data[key] = JSON.parse(localStorage.getItem(key)!);
       } catch {
@@ -116,7 +116,7 @@ function collectLocalStorageData(): Record<string, unknown> {
 
 function downloadJson(data: Record<string, unknown>): void {
   const dateStr = new Date().toISOString().slice(0, 10);
-  const filename = `superteam-academy-export-${dateStr}.json`;
+  const filename = `rector-academy-export-${dateStr}.json`;
   const blob = new Blob([JSON.stringify(data, null, 2)], {
     type: 'application/json',
   });

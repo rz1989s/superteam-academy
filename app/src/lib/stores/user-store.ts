@@ -51,7 +51,7 @@ interface UserState {
 
 export type { StreakState, EnrollmentData, UserState };
 
-const STREAK_STORAGE_KEY = 'superteam-streak';
+const STREAK_STORAGE_KEY = 'rector-academy-streak';
 
 const FREEZE_MILESTONE_INTERVAL = 7;
 const DEFAULT_FREEZES = 1;

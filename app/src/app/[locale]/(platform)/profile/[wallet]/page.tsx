@@ -23,7 +23,7 @@ import { AchievementGrid } from '@/components/profile/achievement-grid';
 import { CompletedCoursesList } from '@/components/profile/completed-courses-list';
 import { CredentialGallery } from '@/components/credentials/credential-gallery';
 
-const PROFILE_KEY = 'superteam-profile';
+const PROFILE_KEY = 'rector-academy-profile';
 
 interface SocialLinks {
   twitter: string;

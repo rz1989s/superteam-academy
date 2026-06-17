@@ -13,7 +13,7 @@ import {
 import { Label } from '@/components/ui/label';
 import { Switch } from '@/components/ui/switch';
 
-const NOTIFICATIONS_KEY = 'superteam-notifications';
+const NOTIFICATIONS_KEY = 'rector-academy-notifications';
 
 interface NotificationPreferences {
   emailNotifications: boolean;

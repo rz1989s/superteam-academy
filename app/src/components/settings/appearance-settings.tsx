@@ -23,7 +23,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 
-const FONT_SIZE_KEY = 'superteam-font-size';
+const FONT_SIZE_KEY = 'rector-academy-font-size';
 
 type FontSize = 'small' | 'medium' | 'large';
 
