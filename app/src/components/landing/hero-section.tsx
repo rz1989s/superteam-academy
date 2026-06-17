@@ -38,7 +38,7 @@ const CODE_LINES = [
     indent: 0,
     tokens: [
       { text: "pub mod ", color: "text-purple-400" },
-      { text: "superteam_academy ", color: "text-green-400" },
+      { text: "rector_academy ", color: "text-green-400" },
       { text: "{", color: "text-foreground/70" },
     ],
   },

@@ -15,7 +15,7 @@ interface Testimonial {
 
 const TESTIMONIALS: Testimonial[] = [
   {
-    quote: 'Superteam Academy gave me the structured path I needed. I went from zero Rust knowledge to deploying my first program in two weeks.',
+    quote: 'RECTOR Academy gave me the structured path I needed. I went from zero Rust knowledge to deploying my first program in two weeks.',
     author: 'Alex K.',
     role: 'Solana Developer',
     walletPrefix: '4xRt',
@@ -48,7 +48,6 @@ const ECOSYSTEM_PARTNERS: EcosystemPartner[] = [
   { name: 'Helius', initial: 'H', gradient: 'from-orange-400 to-amber-600' },
   { name: 'Jupiter', initial: 'J', gradient: 'from-emerald-400 to-teal-600' },
   { name: 'Phantom', initial: 'P', gradient: 'from-indigo-400 to-blue-600' },
-  { name: 'Superteam', initial: 'ST', gradient: 'from-cyan-400 to-sky-600' },
 ];
 
 interface StatItem {

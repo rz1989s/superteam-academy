@@ -172,7 +172,7 @@ export function GamificationPreview() {
                 <div className="flex items-start justify-between">
                   <div>
                     <p className="text-xs font-medium text-white/70">
-                      Superteam Academy
+                      RECTOR Academy
                     </p>
                     <p className="mt-1 text-lg font-bold text-white">
                       Solana Core Credential
