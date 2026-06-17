@@ -122,7 +122,7 @@ interface SocialLink {
 const socialLinks: SocialLink[] = [
   {
     label: 'Twitter',
-    href: 'https://x.com/SuperteamBR',
+    href: 'https://x.com/RZ1989sol',
     icon: XIcon,
   },
   {
@@ -132,7 +132,7 @@ const socialLinks: SocialLink[] = [
   },
   {
     label: 'GitHub',
-    href: 'https://github.com/solanabr/superteam-academy',
+    href: 'https://github.com/rz1989s',
     icon: GitHubIcon,
   },
 ];
@@ -207,7 +207,7 @@ export function Footer() {
         { label: t('link_documentation'), href: '/docs' },
         {
           label: 'GitHub',
-          href: 'https://github.com/solanabr/superteam-academy',
+          href: 'https://github.com/rz1989s',
           external: true,
         },
         {
@@ -216,8 +216,8 @@ export function Footer() {
           external: true,
         },
         {
-          label: 'Superteam',
-          href: 'https://superteam.fun',
+          label: 'RECTOR LABS',
+          href: 'https://rectorspace.com',
           external: true,
         },
       ],
@@ -248,10 +248,10 @@ export function Footer() {
             <Link
               href="/"
               className="inline-flex items-center gap-2 transition-opacity hover:opacity-80"
-              aria-label="Superteam Academy home"
+              aria-label="RECTOR Academy home"
             >
               <GraduationCap className="h-6 w-6 text-primary" />
-              <span className="font-bold text-lg">Superteam Academy</span>
+              <span className="font-bold text-lg">RECTOR Academy</span>
             </Link>
             <p className="mt-4 max-w-xs text-sm text-muted-foreground">
               {t('brand_tagline')}

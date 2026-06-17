@@ -30,11 +30,11 @@ export function Header() {
         <Link
           href="/"
           className="mr-6 flex items-center gap-2 transition-opacity hover:opacity-80"
-          aria-label="Superteam Academy home"
+          aria-label="RECTOR Academy home"
         >
           <GraduationCap className="h-6 w-6 text-primary" />
           <span className="hidden font-bold text-lg sm:inline-block">
-            Superteam Academy
+            RECTOR Academy
           </span>
         </Link>
 
