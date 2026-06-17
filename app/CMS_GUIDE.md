@@ -1,4 +1,4 @@
-# Superteam Academy -- CMS Guide
+# RECTOR Academy -- CMS Guide
 
 A practical guide for content editors using Sanity CMS to manage courses, lessons, achievements, and daily challenges.
 

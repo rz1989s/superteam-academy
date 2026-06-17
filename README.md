@@ -1,30 +1,17 @@
 <div align="center">
 
-```
-███████╗██╗   ██╗██████╗ ███████╗██████╗ ████████╗███████╗ █████╗ ███╗   ███╗
-██╔════╝██║   ██║██╔══██╗██╔════╝██╔══██╗╚══██╔══╝██╔════╝██╔══██╗████╗ ████║
-███████╗██║   ██║██████╔╝█████╗  ██████╔╝   ██║   █████╗  ███████║██╔████╔██║
-╚════██║██║   ██║██╔═══╝ ██╔══╝  ██╔══██╗   ██║   ██╔══╝  ██╔══██║██║╚██╔╝██║
-███████║╚██████╔╝██║     ███████╗██║  ██║   ██║   ███████╗██║  ██║██║ ╚═╝ ██║
-╚══════╝ ╚═════╝ ╚═╝     ╚══════╝╚═╝  ╚═╝   ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝
-                     █████╗  ██████╗ █████╗ ██████╗ ███████╗███╗   ███╗██╗   ██╗
-                    ██╔══██╗██╔════╝██╔══██╗██╔══██╗██╔════╝████╗ ████║╚██╗ ██╔╝
-                    ███████║██║     ███████║██║  ██║█████╗  ██╔████╔██║ ╚████╔╝
-                    ██╔══██║██║     ██╔══██║██║  ██║██╔══╝  ██║╚██╔╝██║  ╚██╔╝
-                    ██║  ██║╚██████╗██║  ██║██████╔╝███████╗██║ ╚═╝ ██║   ██║
-                    ╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚═════╝ ╚══════╝╚═╝     ╚═╝   ╚═╝
-```
+# RECTOR Academy
 
 ### Learn Solana. Build On-Chain. Earn Credentials.
 
 **Production-ready Learning Management System dApp for Solana developer education.**
 Interactive courses, soulbound XP tokens, on-chain credential NFTs, and an integrated code editor.
 
-[![Live Demo](https://img.shields.io/badge/Live_Demo-superteam--academy.rectorspace.com-9333EA?style=for-the-badge&logo=vercel)](https://superteam-academy.rectorspace.com)
+[![Live Demo](https://img.shields.io/badge/Live_Demo-academy.rectorspace.com-9333EA?style=for-the-badge&logo=vercel)](https://academy.rectorspace.com)
 
 [![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Strict_|_Zero_Any-3178C6.svg?logo=typescript&logoColor=white)](tsconfig.json)
-[![Next.js](https://img.shields.io/badge/Next.js-15-black.svg?logo=next.js)](https://nextjs.org)
+[![Next.js](https://img.shields.io/badge/Next.js-16-black.svg?logo=next.js)](https://nextjs.org)
 [![Solana](https://img.shields.io/badge/Solana-Devnet-14F195.svg?logo=solana)](https://explorer.solana.com/address/ACADBRCB3zGvo1KSCbkztS33ZNzeBv2d7bqGceti3ucf?cluster=devnet)
 [![Tests](https://img.shields.io/badge/Tests-364_Unit_|_36_E2E-brightgreen.svg)]()
 [![Challenges](https://img.shields.io/badge/Challenges-100-ff6b6b.svg)]()
@@ -185,7 +172,7 @@ https://github.com/user-attachments/assets/ceeb4f76-4bd3-4ab0-9250-45cf91829f8a
 
 | Layer | Technology |
 |-------|------------|
-| **Framework** | Next.js 15 (App Router), React 19, TypeScript (strict, zero `any`) |
+| **Framework** | Next.js 16 (App Router), React 19, TypeScript (strict, zero `any`) |
 | **Styling** | Tailwind CSS v4 with OKLch design tokens, shadcn/ui |
 | **CMS** | Sanity v3 (with mock-client fallback for zero-config dev) |
 | **Code Editor** | Monaco Editor — Rust, TypeScript, JavaScript, Python, Solidity, JSON |
@@ -215,8 +202,8 @@ https://github.com/user-attachments/assets/ceeb4f76-4bd3-4ab0-9250-45cf91829f8a
 ### Frontend (works with zero config)
 
 ```bash
-git clone https://github.com/solanabr/superteam-academy.git
-cd superteam-academy/app
+git clone https://github.com/RECTOR-LABS/rector-academy.git
+cd rector-academy/app
 cp .env.example .env.local
 pnpm install
 pnpm dev
@@ -253,8 +240,8 @@ NEXTAUTH_URL=http://localhost:3000
 
 ```env
 # RPC — enables real on-chain data (leaderboard, credentials, XP)
-NEXT_PUBLIC_SUPERTEAM_ACADEMY_HELIUS_API_KEY=<your-helius-api-key>
-SUPERTEAM_ACADEMY_HELIUS_API_KEY=<your-helius-api-key>
+NEXT_PUBLIC_RECTOR_ACADEMY_HELIUS_API_KEY=<your-helius-api-key>
+RECTOR_ACADEMY_HELIUS_API_KEY=<your-helius-api-key>
 
 # CMS — switches from mock data to live Sanity
 NEXT_PUBLIC_SANITY_PROJECT_ID=<project-id>
@@ -286,12 +273,12 @@ BACKEND_SIGNER_KEYPAIR=<path-to-keypair>
 ## Architecture
 
 ```
-superteam-academy/
+rector-academy/
 ├── onchain-academy/                ← Anchor program (deployed on devnet)
 │   ├── programs/                   ← Rust source (16 instructions, 6 PDAs)
 │   ├── tests/                      ← 77 Rust + 62 TypeScript tests
 │   └── scripts/                    ← Devnet interaction scripts
-├── app/                            ← Next.js 15 frontend
+├── app/                            ← Next.js 16 frontend
 │   ├── src/
 │   │   ├── app/
 │   │   │   ├── [locale]/(marketing)/   ← Landing page
@@ -444,6 +431,6 @@ Optimizations: image optimization, code splitting, lazy-loaded Monaco editor, st
 
 ---
 
-**Built for [Superteam Brazil](https://superteam.fun) — Empowering Solana developer education across LATAM.**
+**Part of [RECTOR LABS](https://rectorspace.com) — Building for Eternity.**
 
 </div>

@@ -1,8 +1,8 @@
-# Superteam Academy
+# RECTOR Academy
 
 A gamified learning management system for Solana developer education. Built with Next.js 16, Tailwind CSS v4, and on-chain credentials.
 
-[Live Demo](https://academy.superteam.fun) · [Architecture](./ARCHITECTURE.md) · [CMS Guide](./CMS_GUIDE.md) · [Customization](./CUSTOMIZATION.md)
+[Live Demo](https://academy.rectorspace.com) · [Architecture](./ARCHITECTURE.md) · [CMS Guide](./CMS_GUIDE.md) · [Customization](./CUSTOMIZATION.md)
 
 ---
 
@@ -116,7 +116,7 @@ public/          # Static assets (images, icons, manifest)
 | `NEXT_PUBLIC_XP_MINT` | No | XP token mint address (default provided) |
 | `NEXT_PUBLIC_AUTHORITY` | No | Program authority address (default provided) |
 | `NEXT_PUBLIC_CLUSTER` | No | Solana cluster -- `devnet` or `mainnet-beta` |
-| `NEXT_PUBLIC_SUPERTEAM_ACADEMY_HELIUS_API_KEY` | No | Helius API key for reliable Solana RPC access |
+| `NEXT_PUBLIC_RECTOR_ACADEMY_HELIUS_API_KEY` | No | Helius API key for reliable Solana RPC access |
 | `NEXT_PUBLIC_SANITY_PROJECT_ID` | No | Sanity project ID (mock data used if absent) |
 | `NEXT_PUBLIC_SANITY_DATASET` | No | Sanity dataset name (defaults to `production`) |
 | `BACKEND_SIGNER_KEYPAIR` | No | Server-side keypair for anti-cheat signing |

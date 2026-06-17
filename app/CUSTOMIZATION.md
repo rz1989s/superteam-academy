@@ -1,6 +1,6 @@
-# Superteam Academy -- Customization Guide
+# RECTOR Academy -- Customization Guide
 
-A developer reference for extending, theming, and deploying the Superteam Academy platform.
+A developer reference for extending, theming, and deploying the RECTOR Academy platform.
 
 ---
 
@@ -256,7 +256,7 @@ Export a `metadata` object or `generateMetadata` function from your page for pro
 
 ```typescript
 export const metadata = {
-  title: 'Your Page | Superteam Academy',
+  title: 'Your Page | RECTOR Academy',
   description: 'Page description for search engines.',
 };
 ```
@@ -319,7 +319,7 @@ Streak tracking is localStorage-based, managed by the Zustand store in `src/lib/
 - Active today: no-op
 - Active yesterday: increment streak
 - Any other gap: reset to 1
-- Persisted under the key `superteam-streak`
+- Persisted under the key `rector-academy-streak`
 
 To migrate streaks to server-side / on-chain storage, replace the `loadPersistedStreak` and `persistStreak` functions with API calls.
 
@@ -352,8 +352,8 @@ The build produces a Node.js server. Run it behind a reverse proxy (nginx, Caddy
 If a Dockerfile is present:
 
 ```bash
-docker build -t superteam-academy .
-docker run -p 3000:3000 --env-file .env superteam-academy
+docker build -t rector-academy .
+docker run -p 3000:3000 --env-file .env rector-academy
 ```
 
 ---
@@ -371,8 +371,8 @@ Copy `.env.example` to `.env.local` and fill in the values:
 | `NEXT_PUBLIC_XP_MINT` | No | XP token mint address |
 | `NEXT_PUBLIC_AUTHORITY` | No | Program authority public key |
 | `NEXT_PUBLIC_CLUSTER` | No | Solana cluster: `devnet`, `testnet`, or `mainnet-beta` |
-| `NEXT_PUBLIC_SUPERTEAM_ACADEMY_HELIUS_API_KEY` | No | Helius API key (uses public devnet endpoint if unset) |
-| `NEXT_PUBLIC_BASE_URL` | No | Site URL for SEO meta tags (defaults to `academy.superteam.fun`) |
+| `NEXT_PUBLIC_RECTOR_ACADEMY_HELIUS_API_KEY` | No | Helius API key (uses public devnet endpoint if unset) |
+| `NEXT_PUBLIC_BASE_URL` | No | Site URL for SEO meta tags (defaults to `academy.rectorspace.com`) |
 | `NEXT_PUBLIC_GA_MEASUREMENT_ID` | No | Google Analytics measurement ID |
 | `SENTRY_DSN` | No | Sentry error tracking DSN |
 | `SENTRY_AUTH_TOKEN` | No | Sentry authentication token for source maps |

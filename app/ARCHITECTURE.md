@@ -1,12 +1,12 @@
-# Superteam Academy — Architecture
+# RECTOR Academy — Architecture
 
 ## 1. Overview
 
-Superteam Academy is a gamified learning management system (LMS) for Solana developer education. It combines traditional course content delivery with on-chain mechanics — learners earn soulbound XP tokens, unlock credential NFTs, and collect achievement receipts as they progress through structured learning tracks.
+RECTOR Academy is a gamified learning management system (LMS) for Solana developer education. It combines traditional course content delivery with on-chain mechanics — learners earn soulbound XP tokens, unlock credential NFTs, and collect achievement receipts as they progress through structured learning tracks.
 
 The platform is built with Next.js 16 (App Router, Turbopack), styled with Tailwind CSS v4, and backed by Sanity CMS for content management. On-chain integration uses Token-2022 for soulbound XP tokens, Metaplex Core for credential NFTs, and a custom Anchor program for enrollment, progress tracking, and achievement receipts.
 
-Three locales are supported out of the box: English, Portuguese, and Spanish — targeting the Superteam ecosystem across the Americas.
+Three locales are supported out of the box: English, Portuguese, and Spanish — serving Solana developers across the Americas and beyond.
 
 ## 2. Tech Stack
 
@@ -438,7 +438,7 @@ NEXT_PUBLIC_PROGRAM_ID=ACADBRCB3zGvo1KSCbkztS33ZNzeBv2d7bqGceti3ucf
 NEXT_PUBLIC_XP_MINT=xpXPUjkfk7t4AJF1tYUoyAYxzuM5DhinZWS1WjfjAu3
 NEXT_PUBLIC_AUTHORITY=ACAd3USj2sMV6drKcMY2wZtNkhVDHWpC4tfJe93hgqYn
 NEXT_PUBLIC_CLUSTER=devnet
-NEXT_PUBLIC_SUPERTEAM_ACADEMY_HELIUS_API_KEY=  # Helius API key
+NEXT_PUBLIC_RECTOR_ACADEMY_HELIUS_API_KEY=  # Helius API key
 
 # Sanity CMS (optional — falls back to mock client)
 NEXT_PUBLIC_SANITY_PROJECT_ID=
