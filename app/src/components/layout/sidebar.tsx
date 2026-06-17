@@ -82,7 +82,7 @@ function SidebarNavItem({
         'group flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors',
         'hover:bg-accent hover:text-accent-foreground',
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
-        isActive && 'bg-primary/10 text-primary',
+        isActive && 'bg-secondary text-foreground font-semibold',
         !isActive && 'text-muted-foreground',
         collapsed && 'justify-center px-2',
       )}
@@ -92,7 +92,7 @@ function SidebarNavItem({
         className={cn(
           'size-5 shrink-0 transition-colors',
           isActive
-            ? 'text-primary'
+            ? 'text-link dark:text-skyblue'
             : 'text-muted-foreground group-hover:text-accent-foreground',
         )}
       />
@@ -159,7 +159,7 @@ function XPProgressSection({
   }
 
   return (
-    <div className="space-y-2 px-3">
+    <div className="space-y-2 rounded-lg border-2 border-brown/10 bg-card/60 p-3">
       <div className="flex items-center justify-between">
         <Badge variant="secondary" className="text-xs">
           {t('level')} {xpData.level}
@@ -283,7 +283,7 @@ export function SidebarMobileContent({
                   'flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors',
                   'hover:bg-accent hover:text-accent-foreground',
                   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
-                  isActive && 'bg-primary/10 text-primary',
+                  isActive && 'bg-secondary text-foreground font-semibold',
                   !isActive && 'text-muted-foreground',
                 )}
                 aria-current={isActive ? 'page' : undefined}
@@ -291,7 +291,7 @@ export function SidebarMobileContent({
                 <Icon
                   className={cn(
                     'size-5 shrink-0',
-                    isActive ? 'text-primary' : 'text-muted-foreground',
+                    isActive ? 'text-link dark:text-skyblue' : 'text-muted-foreground',
                   )}
                 />
                 <span>{label}</span>
