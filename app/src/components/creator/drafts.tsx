@@ -66,7 +66,7 @@ export function Drafts({ className }: DraftsProps) {
             <div>
               <p className="text-sm font-medium">No drafts yet</p>
               <p className="mt-0.5 text-xs text-muted-foreground">
-                Create your first course to start teaching on Superteam Academy
+                Create your first course to start teaching on RECTOR Academy
               </p>
             </div>
             <Button size="sm" className="mt-2 gap-1.5" asChild>

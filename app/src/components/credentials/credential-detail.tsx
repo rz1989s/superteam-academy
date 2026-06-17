@@ -72,7 +72,7 @@ export function CredentialDetail({
 
   const handleDownloadCertificate = useCallback(() => {
     generateCertificateImage({
-      courseName: credential.name || 'Superteam Academy Credential',
+      courseName: credential.name || 'RECTOR Academy Credential',
       recipientWallet: credential.owner,
       issueDate: credential.createdAt ?? new Date().toISOString(),
       trackId: credential.attributes.trackId,

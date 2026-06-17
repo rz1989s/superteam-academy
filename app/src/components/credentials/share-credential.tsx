@@ -87,7 +87,7 @@ export function ShareCredential({
 
   const handleShareX = useCallback(() => {
     const text = encodeURIComponent(
-      `Check out my Superteam Academy credential: "${credentialName}" \u{1F680}\n\n${credentialUrl}`,
+      `Check out my RECTOR Academy credential: "${credentialName}" \u{1F680}\n\n${credentialUrl}`,
     );
     window.open(
       `https://x.com/intent/tweet?text=${text}`,
