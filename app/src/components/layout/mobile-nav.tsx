@@ -2,7 +2,8 @@
 
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { Link } from '@/i18n/routing';
+import { Link, usePathname } from '@/i18n/routing';
+import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import {
   Sheet,
@@ -39,6 +40,7 @@ const navLinks: NavLink[] = [
 export function MobileNav() {
   const [open, setOpen] = useState(false);
   const t = useTranslations('nav');
+  const pathname = usePathname();
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
@@ -74,14 +76,29 @@ export function MobileNav() {
         >
           {navLinks.map((link) => {
             const Icon = link.icon;
+            const isActive =
+              pathname === link.href || pathname.startsWith(`${link.href}/`);
             return (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="flex items-center gap-3 rounded-md px-3 py-2.5 text-sm font-medium text-foreground/80 transition-colors hover:bg-accent/50 hover:text-foreground"
+                aria-current={isActive ? 'page' : undefined}
+                className={cn(
+                  'flex items-center gap-3 rounded-md px-3 py-2.5 text-sm font-medium transition-colors',
+                  isActive
+                    ? 'bg-secondary text-foreground font-semibold'
+                    : 'text-foreground/80 hover:bg-accent/50 hover:text-foreground',
+                )}
               >
-                <Icon className="h-4 w-4 text-muted-foreground" />
+                <Icon
+                  className={cn(
+                    'h-4 w-4',
+                    isActive
+                      ? 'text-link dark:text-skyblue'
+                      : 'text-muted-foreground',
+                  )}
+                />
                 {t(link.labelKey)}
               </Link>
             );
