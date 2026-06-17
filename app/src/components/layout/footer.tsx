@@ -6,7 +6,6 @@ import { toast } from 'sonner';
 import { Link } from '@/i18n/routing';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Separator } from '@/components/ui/separator';
 import { GraduationCap } from 'lucide-react';
 
 function XIcon({ className }: { className?: string }) {
@@ -292,7 +291,7 @@ export function Footer() {
         </div>
 
         {/* Newsletter Signup */}
-        <div className="mt-12 rounded-lg border border-border/50 bg-muted/30 p-6">
+        <div className="mt-12 rounded-lg border-2 border-brown/10 bg-secondary/40 p-6">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div className="space-y-1">
               <h3 className="text-sm font-semibold text-foreground">
@@ -306,7 +305,7 @@ export function Footer() {
           </div>
         </div>
 
-        <Separator className="my-8" />
+        <div className="my-8 border-t-2 border-gold/60" />
 
         {/* Bottom Bar */}
         <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
