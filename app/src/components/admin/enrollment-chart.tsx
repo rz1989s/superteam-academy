@@ -134,12 +134,12 @@ export function EnrollmentChart() {
             >
               <stop
                 offset="0%"
-                stopColor="oklch(0.541 0.267 293)"
+                stopColor="#3B2C22"
                 stopOpacity="0.3"
               />
               <stop
                 offset="100%"
-                stopColor="oklch(0.541 0.267 293)"
+                stopColor="#3B2C22"
                 stopOpacity="0.02"
               />
             </linearGradient>

@@ -13,23 +13,23 @@ const TICK_COUNT = 6;
 const TICK_DIVISIONS = TICK_COUNT - 1;
 
 const CHART_COLORS = [
-  'oklch(0.541 0.267 293)',   // primary purple
-  'oklch(0.592 0.176 152)',   // accent green
-  'oklch(0.646 0.222 41.116)', // chart-1 orange
-  'oklch(0.6 0.118 184.704)', // chart-2 teal
-  'oklch(0.828 0.189 84.429)', // chart-4 yellow
-  'oklch(0.769 0.188 70.08)', // chart-5 gold
-  'oklch(0.398 0.07 227.392)', // chart-3 dark blue
+  '#41CFFF', // skyblue
+  '#A8E063', // leaf
+  '#E58C2E', // clay
+  '#F9C846', // gold
+  '#C75A44', // muted red
+  '#0D7390', // link (deep cyan)
+  '#3C6A12', // green-deep
 ];
 
 const BG_COLORS = [
-  'bg-primary',
-  'bg-accent',
-  'bg-chart-1',
-  'bg-chart-2',
-  'bg-chart-4',
-  'bg-chart-5',
-  'bg-chart-3',
+  'bg-skyblue',
+  'bg-leaf',
+  'bg-clay',
+  'bg-gold',
+  'bg-[#C75A44]',
+  'bg-link',
+  'bg-green-deep',
 ];
 
 /* ─────────────────────────────────────────────────────────────
