@@ -10,11 +10,11 @@ export function getOrganizationJsonLd() {
   return {
     '@context': 'https://schema.org',
     '@type': 'EducationalOrganization',
-    name: 'Superteam Academy',
-    url: 'https://superteam-academy.rectorspace.com',
+    name: 'RECTOR Academy',
+    url: 'https://academy.rectorspace.com',
     description:
       'Learn Solana development with interactive courses, soulbound XP tokens, and on-chain credentials.',
-    sameAs: ['https://github.com/solanabr/superteam-academy'],
+    sameAs: ['https://github.com/rz1989s'],
   };
 }
 
@@ -26,7 +26,7 @@ export function getCourseJsonLd(course: CourseWithMeta) {
     description: course.description,
     provider: {
       '@type': 'EducationalOrganization',
-      name: 'Superteam Academy',
+      name: 'RECTOR Academy',
     },
     educationalLevel: DIFFICULTY_LABELS[course.difficulty] ?? 'Beginner',
     inLanguage: ['en', 'pt-BR', 'es'],

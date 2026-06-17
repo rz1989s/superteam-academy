@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://academy.superteam.fun';
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://academy.rectorspace.com';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const locales = ['en', 'pt', 'es'];
