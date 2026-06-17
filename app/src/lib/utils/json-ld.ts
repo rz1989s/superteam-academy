@@ -29,7 +29,7 @@ export function getCourseJsonLd(course: CourseWithMeta) {
       name: 'RECTOR Academy',
     },
     educationalLevel: DIFFICULTY_LABELS[course.difficulty] ?? 'Beginner',
-    inLanguage: ['en', 'pt-BR', 'es'],
+    inLanguage: ['en', 'pt-BR', 'es', 'hi'],
     isAccessibleForFree: true,
     timeRequired: `PT${course.estimatedHours}H`,
     numberOfLessons: course.lessonCount,
