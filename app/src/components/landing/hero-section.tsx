@@ -23,97 +23,99 @@ const STATS = [
   { icon: Zap, value: "1.2M", label: "XP Awarded" },
 ] as const;
 
+// Syntax tokens are decorative fills on the dark terminal surface (bg-brown):
+// brand cyan/green/gold/clay read well on dark; punctuation is cream.
 const CODE_LINES = [
   {
     indent: 0,
     tokens: [
-      { text: "use ", color: "text-purple-400" },
-      { text: "anchor_lang", color: "text-green-400" },
-      { text: "::prelude::*;", color: "text-foreground/70" },
+      { text: "use ", color: "text-skyblue" },
+      { text: "anchor_lang", color: "text-leaf" },
+      { text: "::prelude::*;", color: "text-cream/70" },
     ],
   },
   { indent: 0, tokens: [] },
-  { indent: 0, tokens: [{ text: "#[program]", color: "text-yellow-400" }] },
+  { indent: 0, tokens: [{ text: "#[program]", color: "text-gold" }] },
   {
     indent: 0,
     tokens: [
-      { text: "pub mod ", color: "text-purple-400" },
-      { text: "rector_academy ", color: "text-green-400" },
-      { text: "{", color: "text-foreground/70" },
+      { text: "pub mod ", color: "text-skyblue" },
+      { text: "rector_academy ", color: "text-leaf" },
+      { text: "{", color: "text-cream/70" },
     ],
   },
   {
     indent: 1,
     tokens: [
-      { text: "pub fn ", color: "text-purple-400" },
-      { text: "complete_lesson", color: "text-blue-400" },
-      { text: "(", color: "text-foreground/70" },
+      { text: "pub fn ", color: "text-skyblue" },
+      { text: "complete_lesson", color: "text-clay" },
+      { text: "(", color: "text-cream/70" },
     ],
   },
   {
     indent: 2,
     tokens: [
-      { text: "ctx: ", color: "text-foreground/70" },
-      { text: "Context", color: "text-yellow-400" },
-      { text: "<CompleteLessonCtx>,", color: "text-foreground/70" },
+      { text: "ctx: ", color: "text-cream/70" },
+      { text: "Context", color: "text-gold" },
+      { text: "<CompleteLessonCtx>,", color: "text-cream/70" },
     ],
   },
   {
     indent: 2,
     tokens: [
-      { text: "xp_reward: ", color: "text-foreground/70" },
-      { text: "u64", color: "text-yellow-400" },
+      { text: "xp_reward: ", color: "text-cream/70" },
+      { text: "u64", color: "text-gold" },
     ],
   },
   {
     indent: 1,
     tokens: [
-      { text: ") -> ", color: "text-foreground/70" },
-      { text: "Result", color: "text-yellow-400" },
-      { text: "<()> {", color: "text-foreground/70" },
+      { text: ") -> ", color: "text-cream/70" },
+      { text: "Result", color: "text-gold" },
+      { text: "<()> {", color: "text-cream/70" },
     ],
   },
   {
     indent: 2,
     tokens: [
-      { text: "let learner = &", color: "text-foreground/70" },
-      { text: "mut ", color: "text-purple-400" },
-      { text: "ctx.accounts.learner;", color: "text-foreground/70" },
+      { text: "let learner = &", color: "text-cream/70" },
+      { text: "mut ", color: "text-skyblue" },
+      { text: "ctx.accounts.learner;", color: "text-cream/70" },
     ],
   },
   {
     indent: 2,
-    tokens: [{ text: "learner.xp += xp_reward;", color: "text-foreground/70" }],
+    tokens: [{ text: "learner.xp += xp_reward;", color: "text-cream/70" }],
   },
   {
     indent: 2,
     tokens: [
-      { text: "emit!", color: "text-purple-400" },
-      { text: "(LessonCompleted {", color: "text-foreground/70" },
+      { text: "emit!", color: "text-skyblue" },
+      { text: "(LessonCompleted {", color: "text-cream/70" },
     ],
   },
   {
     indent: 3,
     tokens: [
-      { text: "learner: ", color: "text-foreground/70" },
-      { text: "learner.key()", color: "text-blue-400" },
-      { text: ",", color: "text-foreground/70" },
+      { text: "learner: ", color: "text-cream/70" },
+      { text: "learner.key()", color: "text-clay" },
+      { text: ",", color: "text-cream/70" },
     ],
   },
   {
     indent: 3,
-    tokens: [{ text: "xp_earned: xp_reward", color: "text-foreground/70" }],
+    tokens: [{ text: "xp_earned: xp_reward", color: "text-cream/70" }],
   },
-  { indent: 2, tokens: [{ text: "});", color: "text-foreground/70" }] },
+  { indent: 2, tokens: [{ text: "});", color: "text-cream/70" }] },
   {
     indent: 2,
     tokens: [
-      { text: "Ok", color: "text-green-400" },
-      { text: "(())", color: "text-foreground/70" },
+      { text: "Ok", color: "text-leaf" },
+      { text: "(())", color: "text-cream/70" },
     ],
   },
-  { indent: 1, tokens: [{ text: "}", color: "text-foreground/70" }] },
-  { indent: 0, tokens: [{ text: "}", color: "text-foreground/70" }] },
+  { indent: 1, tokens: [{ text: "}", color: "text-cream/70" }] },
+  { indent: 0, tokens: [{ text: "}", color: "text-cream/70" }] },
 ];
 
 export function HeroSection() {
@@ -164,24 +166,22 @@ export function HeroSection() {
 
       {/* Gradient orbs */}
       <div className="absolute -left-32 -top-32 -z-10 h-[500px] w-[500px] rounded-full bg-primary/10 blur-[128px]" />
-      <div className="absolute -bottom-32 -right-32 -z-10 h-[400px] w-[400px] rounded-full bg-accent/10 blur-[128px]" />
+      <div className="absolute -bottom-32 -right-32 -z-10 h-[400px] w-[400px] rounded-full bg-skyblue/10 blur-[128px]" />
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Left column: Copy + CTAs */}
           <div className="flex flex-col items-start gap-6">
             <Badge variant="secondary" className="gap-1.5 px-3 py-1 text-sm">
-              <Zap className="h-3.5 w-3.5 text-accent" />
+              <Zap className="h-3.5 w-3.5 text-clay-deep" />
               Powered by Solana
             </Badge>
 
             <h1
               id="hero-heading"
-              className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl"
+              className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl"
             >
-              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                {t("hero_title")}
-              </span>
+              {t("hero_title")}
             </h1>
 
             <p className="max-w-lg text-lg leading-relaxed text-muted-foreground sm:text-xl">
@@ -241,17 +241,17 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* Right column: Code terminal mockup */}
+          {/* Right column: Code terminal mockup (dark surface) */}
           <div className="relative animate-fade-in-up lg:ml-auto">
-            <div className="overflow-hidden rounded-xl border bg-card shadow-2xl shadow-primary/5">
+            <div className="overflow-hidden rounded-xl border border-cream/10 bg-brown shadow-2xl shadow-brown/20">
               {/* Terminal header */}
-              <div className="flex items-center gap-2 border-b bg-muted/50 px-4 py-3">
+              <div className="flex items-center gap-2 border-b border-cream/10 bg-cream/5 px-4 py-3">
                 <div className="flex gap-1.5">
-                  <div className="h-3 w-3 rounded-full bg-red-400/80" />
-                  <div className="h-3 w-3 rounded-full bg-yellow-400/80" />
-                  <div className="h-3 w-3 rounded-full bg-green-400/80" />
+                  <div className="h-3 w-3 rounded-full bg-rust/80" />
+                  <div className="h-3 w-3 rounded-full bg-gold/80" />
+                  <div className="h-3 w-3 rounded-full bg-leaf/80" />
                 </div>
-                <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                <div className="flex items-center gap-1.5 text-xs text-cream/60">
                   <Terminal className="h-3.5 w-3.5" />
                   <span>lib.rs</span>
                 </div>
@@ -269,7 +269,7 @@ export function HeroSection() {
                             {token.text}
                           </span>
                         ))}
-                        {line.tokens.length === 0 && "\u00A0"}
+                        {line.tokens.length === 0 && " "}
                       </div>
                     ))}
                   </code>
@@ -280,8 +280,8 @@ export function HeroSection() {
             {/* Floating accent badge */}
             <div className="absolute -bottom-3 -left-3 rounded-lg border bg-card px-3 py-2 shadow-lg sm:-bottom-4 sm:-left-4">
               <div className="flex items-center gap-2">
-                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-accent/10">
-                  <Zap className="h-4 w-4 text-accent" />
+                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gold/15">
+                  <Zap className="h-4 w-4 text-clay-deep" />
                 </div>
                 <div>
                   <p className="text-xs font-medium">+250 XP</p>
