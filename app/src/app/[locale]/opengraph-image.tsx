@@ -30,9 +30,9 @@ export default async function Image({ params }: { params: Promise<{ locale: stri
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          backgroundColor: '#0a0a0a',
+          backgroundColor: '#FFF7E1',
           backgroundImage:
-            'radial-gradient(circle at 25% 25%, #9945FF22 0%, transparent 50%), radial-gradient(circle at 75% 75%, #14F19522 0%, transparent 50%)',
+            'radial-gradient(circle at 25% 25%, #41CFFF22 0%, transparent 50%), radial-gradient(circle at 75% 75%, #F9C84622 0%, transparent 50%)',
         }}
       >
         <div
@@ -47,7 +47,7 @@ export default async function Image({ params }: { params: Promise<{ locale: stri
             style={{
               fontSize: '28px',
               fontWeight: 700,
-              color: '#9945FF',
+              color: '#3B2C22',
               letterSpacing: '0.05em',
               textTransform: 'uppercase',
             }}
@@ -58,7 +58,7 @@ export default async function Image({ params }: { params: Promise<{ locale: stri
             style={{
               fontSize: '56px',
               fontWeight: 800,
-              color: '#ffffff',
+              color: '#3B2C22',
               textAlign: 'center',
               maxWidth: '900px',
               lineHeight: 1.2,
@@ -69,7 +69,7 @@ export default async function Image({ params }: { params: Promise<{ locale: stri
           <div
             style={{
               fontSize: '24px',
-              color: '#a1a1aa',
+              color: 'rgba(59, 44, 34, 0.7)',
               textAlign: 'center',
             }}
           >
@@ -88,8 +88,8 @@ export default async function Image({ params }: { params: Promise<{ locale: stri
                 style={{
                   padding: '8px 20px',
                   borderRadius: '999px',
-                  border: '1px solid #9945FF44',
-                  color: '#9945FF',
+                  border: '1px solid rgba(59, 44, 34, 0.25)',
+                  color: '#3B2C22',
                   fontSize: '16px',
                   fontWeight: 600,
                 }}
