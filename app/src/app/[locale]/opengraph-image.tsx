@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og';
 
 export const runtime = 'edge';
-export const alt = 'Superteam Academy - Learn Solana Development';
+export const alt = 'RECTOR Academy - Learn Solana Development';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -52,7 +52,7 @@ export default async function Image({ params }: { params: Promise<{ locale: stri
               textTransform: 'uppercase',
             }}
           >
-            Superteam Academy
+            RECTOR Academy
           </div>
           <div
             style={{

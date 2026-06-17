@@ -1,7 +1,7 @@
-/// Service Worker — Superteam Academy PWA
+/// Service Worker — RECTOR Academy PWA
 /// Vanilla service worker with multi-strategy caching
 
-const CACHE_VERSION = 'sta-v1';
+const CACHE_VERSION = 'rca-v1';
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const DYNAMIC_CACHE = `${CACHE_VERSION}-dynamic`;
 const OFFLINE_URL = '/offline.html';
