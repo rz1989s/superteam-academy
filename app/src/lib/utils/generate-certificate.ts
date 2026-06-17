@@ -175,7 +175,7 @@ export function generateCertificateImage(data: CertificateData): void {
   ctx.font = 'bold 16px system-ui, -apple-system, sans-serif';
   ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
   ctx.textAlign = 'left';
-  ctx.fillText('SUPERTEAM ACADEMY', cardX + 36, cardY + 44);
+  ctx.fillText('RECTOR ACADEMY', cardX + 36, cardY + 44);
   ctx.restore();
 
   // -- "Certificate of Completion" label --
@@ -287,7 +287,7 @@ export function generateCertificateImage(data: CertificateData): void {
   // -- Export as PNG download --
   const dataUrl = canvas.toDataURL('image/png');
   const link = document.createElement('a');
-  link.download = `superteam-certificate-${Date.now()}.png`;
+  link.download = `rector-academy-certificate-${Date.now()}.png`;
   link.href = dataUrl;
   document.body.appendChild(link);
   link.click();

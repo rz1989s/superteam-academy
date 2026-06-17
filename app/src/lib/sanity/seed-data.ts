@@ -1,5 +1,5 @@
 /**
- * Comprehensive CMS seed data for Superteam Academy.
+ * Comprehensive CMS seed data for RECTOR Academy.
  *
  * Exports sample data in the exact shapes that Sanity GROQ projections return.
  * Consumed by `mock-client.ts` during development without a Sanity backend

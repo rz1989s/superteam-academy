@@ -2994,7 +2994,7 @@ export async function addMultipleExtensions(
     id: 'te-020',
     title: 'Multi-Extension Mint Creation',
     description:
-      'Create a Token-2022 mint with multiple extensions enabled simultaneously. Combine NonTransferable, PermanentDelegate, MintCloseAuthority, and MetadataPointer in a single mint -- the pattern used by Superteam Academy for soulbound XP tokens. Understanding extension composition is essential for production Token-2022 work.',
+      'Create a Token-2022 mint with multiple extensions enabled simultaneously. Combine NonTransferable, PermanentDelegate, MintCloseAuthority, and MetadataPointer in a single mint -- the pattern used by RECTOR Academy for soulbound XP tokens. Understanding extension composition is essential for production Token-2022 work.',
     difficulty: 'beginner',
     category: 'token-extensions',
     language: 'typescript',
@@ -3142,7 +3142,7 @@ export async function createSoulboundXpMint(
     hints: [
       'Pass all extension types as an array to getMintLen to calculate the total space needed.',
       'ALL extension initialization instructions must come BEFORE createInitializeMintInstruction. Order among extensions does not matter.',
-      'This is the exact pattern used by Superteam Academy for soulbound XP tokens: non-transferable + authority-burnable + closable + metadata-ready.',
+      'This is the exact pattern used by RECTOR Academy for soulbound XP tokens: non-transferable + authority-burnable + closable + metadata-ready.',
     ],
     xpReward: 50,
     estimatedMinutes: 15,
