@@ -1,7 +1,6 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { Badge } from '@/components/ui/badge';
 import { Wallet, Code2, Award, Sparkles } from 'lucide-react';
 
 interface Step {
@@ -18,24 +17,24 @@ const STEPS: Step[] = [
     titleKey: 'step_1_title',
     descKey: 'step_1_desc',
     icon: Wallet,
-    iconBg: 'bg-primary/10',
-    iconColor: 'text-primary',
+    iconBg: 'bg-skyblue/10',
+    iconColor: 'text-link',
     number: 1,
   },
   {
     titleKey: 'step_2_title',
     descKey: 'step_2_desc',
     icon: Code2,
-    iconBg: 'bg-accent/10',
-    iconColor: 'text-accent',
+    iconBg: 'bg-clay/15',
+    iconColor: 'text-clay-deep',
     number: 2,
   },
   {
     titleKey: 'step_3_title',
     descKey: 'step_3_desc',
     icon: Award,
-    iconBg: 'bg-yellow-500/10',
-    iconColor: 'text-yellow-600 dark:text-yellow-400',
+    iconBg: 'bg-gold/20',
+    iconColor: 'text-clay-deep',
     number: 3,
   },
 ];
@@ -51,10 +50,10 @@ export function HowItWorks() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <div className="flex flex-col items-center gap-4 text-center">
-          <Badge variant="outline" className="gap-1.5">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-secondary px-3 py-1 text-xs font-medium uppercase tracking-wider text-muted-foreground">
             <Sparkles className="h-3.5 w-3.5" />
             Simple Process
-          </Badge>
+          </span>
           <h2
             id="how-it-works-heading"
             className="text-3xl font-bold tracking-tight sm:text-4xl"
