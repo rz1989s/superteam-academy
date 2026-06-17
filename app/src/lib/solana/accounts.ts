@@ -18,7 +18,7 @@ import type {
 } from './idl/onchain-academy-types';
 
 /**
- * Account readers for the Superteam Academy on-chain program.
+ * Account readers for the RECTOR Academy on-chain program.
  *
  * Without a compiled Anchor IDL, we cannot deserialize account data directly.
  * Each function fetches the raw AccountInfo via the derived PDA address.

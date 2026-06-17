@@ -10,7 +10,7 @@ const ENROLL_DISCRIMINATOR = Buffer.from([58, 12, 36, 3, 142, 28, 1, 43]);
 const CLOSE_ENROLLMENT_DISCRIMINATOR = Buffer.from([236, 137, 133, 253, 91, 138, 217, 91]);
 
 /**
- * Builds the `enroll` instruction for the Superteam Academy program.
+ * Builds the `enroll` instruction for the RECTOR Academy program.
  *
  * The learner signs this transaction to create their Enrollment PDA.
  * If the course has a prerequisite, the prerequisite Course PDA and
@@ -53,7 +53,7 @@ export function buildEnrollInstruction(
 }
 
 /**
- * Builds the `close_enrollment` instruction for the Superteam Academy program.
+ * Builds the `close_enrollment` instruction for the RECTOR Academy program.
  *
  * The learner signs this transaction to close their Enrollment PDA and
  * reclaim rent. Completed courses close immediately; incomplete courses

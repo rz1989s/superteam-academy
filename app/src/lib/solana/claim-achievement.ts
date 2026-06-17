@@ -9,7 +9,7 @@ import { achievementTypePda, achievementReceiptPda, configPda } from './pda';
 const CLAIM_ACHIEVEMENT_DISCRIMINATOR = Buffer.from([107, 181, 102, 247, 207, 212, 251, 24]);
 
 /**
- * Builds the `claim_achievement` instruction for the Superteam Academy program.
+ * Builds the `claim_achievement` instruction for the RECTOR Academy program.
  *
  * The recipient (learner) signs to claim an earned achievement on-chain,
  * creating an AchievementReceipt PDA.

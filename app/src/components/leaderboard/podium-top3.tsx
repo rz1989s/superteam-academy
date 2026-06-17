@@ -212,7 +212,7 @@ export function PodiumTop3({
         <Trophy className="size-10 text-muted-foreground" />
         <p className="text-sm text-muted-foreground">
           {dasUnavailable
-            ? "Leaderboard requires a Helius API key. Set NEXT_PUBLIC_SUPERTEAM_ACADEMY_HELIUS_API_KEY in your environment."
+            ? "Leaderboard requires a Helius API key. Set NEXT_PUBLIC_RECTOR_ACADEMY_HELIUS_API_KEY in your environment."
             : "No rankings yet. Be the first to earn XP!"}
         </p>
       </div>

@@ -2,7 +2,7 @@ import { PublicKey } from '@solana/web3.js';
 import BN from 'bn.js';
 
 /**
- * TypeScript type definitions for the Superteam Academy on-chain program accounts.
+ * TypeScript type definitions for the RECTOR Academy on-chain program accounts.
  * Manually derived from docs/SPEC.md v3.0 — no IDL JSON available yet.
  *
  * These types mirror the Anchor account structs defined in the program's

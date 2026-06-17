@@ -22,17 +22,17 @@ export const CLUSTER = (process.env.NEXT_PUBLIC_CLUSTER || "devnet") as
 
 /** Client-safe RPC endpoint for wallet adapter connections. */
 export const HELIUS_RPC = process.env
-  .NEXT_PUBLIC_SUPERTEAM_ACADEMY_HELIUS_API_KEY
-  ? `https://mainnet.helius-rpc.com/?api-key=${process.env.NEXT_PUBLIC_SUPERTEAM_ACADEMY_HELIUS_API_KEY}`
+  .NEXT_PUBLIC_RECTOR_ACADEMY_HELIUS_API_KEY
+  ? `https://mainnet.helius-rpc.com/?api-key=${process.env.NEXT_PUBLIC_RECTOR_ACADEMY_HELIUS_API_KEY}`
   : "https://api.devnet.solana.com";
 
 /**
  * Server-only RPC endpoint with full Helius API key.
- * Uses SUPERTEAM_ACADEMY_HELIUS_API_KEY (no NEXT_PUBLIC_ prefix) so the key
+ * Uses RECTOR_ACADEMY_HELIUS_API_KEY (no NEXT_PUBLIC_ prefix) so the key
  * stays out of client bundles. Falls back to the public HELIUS_RPC when not set.
  */
-export const HELIUS_RPC_SERVER = process.env.SUPERTEAM_ACADEMY_HELIUS_API_KEY
-  ? `https://mainnet.helius-rpc.com/?api-key=${process.env.SUPERTEAM_ACADEMY_HELIUS_API_KEY}`
+export const HELIUS_RPC_SERVER = process.env.RECTOR_ACADEMY_HELIUS_API_KEY
+  ? `https://mainnet.helius-rpc.com/?api-key=${process.env.RECTOR_ACADEMY_HELIUS_API_KEY}`
   : HELIUS_RPC;
 
 export const TOKEN_2022_PROGRAM_ID = new PublicKey(

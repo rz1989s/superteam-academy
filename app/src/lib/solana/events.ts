@@ -1,5 +1,5 @@
 /**
- * On-chain program event types emitted by the Superteam Academy program.
+ * On-chain program event types emitted by the RECTOR Academy program.
  * Events are encoded in transaction logs as base64-prefixed data after
  * the "Program data:" anchor event discriminator.
  */

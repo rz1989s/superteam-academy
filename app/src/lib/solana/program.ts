@@ -3,7 +3,7 @@ import { Connection } from '@solana/web3.js';
 import { HELIUS_RPC } from './constants';
 
 /**
- * Lightweight program wrapper for Superteam Academy on-chain program.
+ * Lightweight program wrapper for RECTOR Academy on-chain program.
  *
  * No full Anchor IDL is available yet (program not buildable from frontend),
  * so this module provides connection and provider factories used by the
