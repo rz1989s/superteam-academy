@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description:
     'Learn Solana development through interactive courses. Earn soulbound XP tokens and verifiable NFT credentials.',
   openGraph: {
-    title: 'Superteam Academy',
+    title: 'RECTOR Academy',
     description: 'Interactive Solana developer education with on-chain credentials.',
     type: 'website',
   },

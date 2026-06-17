@@ -80,7 +80,7 @@ export default function CreatorPage() {
           <p className="mt-1 text-sm text-muted-foreground">
             {!publicKey
               ? 'Connect your wallet to access the creator dashboard'
-              : 'Create and manage your courses on Superteam Academy'}
+              : 'Create and manage your courses on RECTOR Academy'}
           </p>
         </div>
         <BecomeCreatorCTA />

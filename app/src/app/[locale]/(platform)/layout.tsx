@@ -6,7 +6,7 @@ import { Sidebar } from '@/components/layout/sidebar';
 export const metadata: Metadata = {
   title: {
     default: 'Platform',
-    template: '%s | Superteam Academy',
+    template: '%s | RECTOR Academy',
   },
 };
 

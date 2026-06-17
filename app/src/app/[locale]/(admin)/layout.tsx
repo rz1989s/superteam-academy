@@ -6,7 +6,7 @@ import { AdminSidebar } from '@/components/admin/admin-sidebar';
 export const metadata: Metadata = {
   title: {
     default: 'Admin',
-    template: '%s | Admin | Superteam Academy',
+    template: '%s | Admin | RECTOR Academy',
   },
 };
 

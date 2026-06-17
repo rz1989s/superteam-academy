@@ -27,8 +27,8 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Superteam Academy',
-    template: '%s | Superteam Academy',
+    default: 'RECTOR Academy',
+    template: '%s | RECTOR Academy',
   },
   description:
     'Learn Solana development through interactive courses, earn soulbound XP tokens and verifiable credential NFTs.',

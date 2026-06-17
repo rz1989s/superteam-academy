@@ -24,7 +24,7 @@ function getNotificationsForWallet(wallet: string): Notification[] {
     {
       id: `notif-${wallet.slice(0, 8)}-1`,
       type: 'system',
-      title: 'Welcome to Superteam Academy',
+      title: 'Welcome to RECTOR Academy',
       message: 'Start your Solana journey by enrolling in Solana 101.',
       read: false,
       createdAt: new Date(now.getTime() - 86_400_000).toISOString(),
