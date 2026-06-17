@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { NextIntlClientProvider, hasLocale } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
@@ -18,6 +18,10 @@ const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
   display: 'swap',
 });
+
+export const viewport: Viewport = {
+  themeColor: '#3B2C22',
+};
 
 export const metadata: Metadata = {
   title: {
