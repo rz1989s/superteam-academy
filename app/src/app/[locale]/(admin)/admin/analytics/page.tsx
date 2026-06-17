@@ -49,8 +49,8 @@ const ANALYTICS_STATS: AnalyticsStat[] = [
     value: '82.1%',
     subtext: '+2.8% from prior period',
     icon: Users,
-    color: 'text-violet-600 dark:text-violet-400',
-    bg: 'bg-violet-100 dark:bg-violet-950',
+    color: 'text-link dark:text-skyblue',
+    bg: 'bg-skyblue/10 dark:bg-skyblue/15',
   },
   {
     label: 'Avg Session Time',

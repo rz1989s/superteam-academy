@@ -48,8 +48,8 @@ const ACTIVITY_CONFIG: Record<
   },
   achievement: {
     icon: Medal,
-    color: 'text-violet-600 dark:text-violet-400',
-    bg: 'bg-violet-100 dark:bg-violet-950',
+    color: 'text-link dark:text-skyblue',
+    bg: 'bg-skyblue/10 dark:bg-skyblue/15',
   },
   course_created: {
     icon: BookOpen,

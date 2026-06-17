@@ -92,8 +92,8 @@ const MOCK_ACHIEVEMENTS: Achievement[] = [
     icon: Star,
     recipients: 892,
     active: false,
-    iconColor: 'text-violet-600 dark:text-violet-400',
-    iconBg: 'bg-violet-100 dark:bg-violet-950',
+    iconColor: 'text-link dark:text-skyblue',
+    iconBg: 'bg-skyblue/10 dark:bg-skyblue/15',
   },
   {
     id: 'top-performer',
