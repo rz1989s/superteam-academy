@@ -1,7 +1,8 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { Link } from '@/i18n/routing';
+import { Link, usePathname } from '@/i18n/routing';
+import { cn } from '@/lib/utils';
 import { ThemeToggle } from '@/components/ui/theme-toggle';
 import { LanguageSwitcher } from '@/components/layout/language-switcher';
 import { MobileNav } from '@/components/layout/mobile-nav';
@@ -19,6 +20,26 @@ const navItems: NavItem[] = [
   { href: '/leaderboard', labelKey: 'leaderboard' },
   { href: '/community', labelKey: 'community' },
 ];
+
+function HeaderNavLink({ href, label }: { href: string; label: string }) {
+  const pathname = usePathname();
+  const isActive = pathname === href || pathname.startsWith(`${href}/`);
+
+  return (
+    <Link
+      href={href}
+      aria-current={isActive ? 'page' : undefined}
+      className={cn(
+        'relative rounded-md px-3 py-2 text-sm font-medium transition-colors',
+        isActive
+          ? 'text-foreground after:absolute after:inset-x-3 after:-bottom-0.5 after:h-0.5 after:rounded-full after:bg-gold after:content-[""]'
+          : 'text-muted-foreground hover:text-foreground',
+      )}
+    >
+      {label}
+    </Link>
+  );
+}
 
 export function Header() {
   const t = useTranslations('nav');
@@ -44,13 +65,11 @@ export function Header() {
           aria-label="Main navigation"
         >
           {navItems.map((item) => (
-            <Link
+            <HeaderNavLink
               key={item.href}
               href={item.href}
-              className="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-            >
-              {t(item.labelKey)}
-            </Link>
+              label={t(item.labelKey)}
+            />
           ))}
         </nav>
 
