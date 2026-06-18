@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl';
 import { SlidersHorizontal } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { PageHeader } from '@/components/ui/page-header';
 import {
   Sheet,
   SheetContent,
@@ -61,16 +62,12 @@ export default function CoursesPage() {
   const activeFilterCount = countActive(filters);
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className="mx-auto flex w-full max-w-7xl flex-col gap-6">
       {/* Page header */}
-      <div className="flex flex-col gap-1">
-        <h1 className="text-2xl font-bold tracking-tight lg:text-3xl">
-          {t('catalog_title')}
-        </h1>
-        <p className="text-muted-foreground text-sm lg:text-base">
-          {t('catalog_description')}
-        </p>
-      </div>
+      <PageHeader
+        title={t('catalog_title')}
+        description={t('catalog_description')}
+      />
 
       {/* Search bar + mobile filter toggle */}
       <div className="flex items-center gap-3">
