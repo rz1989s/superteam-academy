@@ -1,45 +1,11 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { Award, Shield, Sparkles } from 'lucide-react';
+import { Award, Sparkles } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { cn } from '@/lib/utils';
-
-// ---------------------------------------------------------------------------
-// Track styling for the credential mockup
-// ---------------------------------------------------------------------------
-
-const CREDENTIAL_ACCENTS: Record<number, { gradient: string; ring: string }> = {
-  1: {
-    gradient: 'from-purple-500 to-indigo-600',
-    ring: 'ring-purple-500/20',
-  },
-  2: {
-    gradient: 'from-blue-500 to-cyan-600',
-    ring: 'ring-blue-500/20',
-  },
-  3: {
-    gradient: 'from-pink-500 to-rose-600',
-    ring: 'ring-pink-500/20',
-  },
-  4: {
-    gradient: 'from-orange-500 to-amber-600',
-    ring: 'ring-orange-500/20',
-  },
-};
-
-const DEFAULT_ACCENT = {
-  gradient: 'from-primary to-accent',
-  ring: 'ring-primary/20',
-};
-
-const TRACK_NAMES: Record<number, string> = {
-  1: 'Solana Core',
-  2: 'DeFi',
-  3: 'NFT',
-  4: 'Security',
-};
+import { getTrack } from '@/lib/tracks';
 
 // ---------------------------------------------------------------------------
 // Types
@@ -61,8 +27,9 @@ export function CredentialPreview({
   totalXp,
 }: CredentialPreviewProps) {
   const t = useTranslations('courses');
-  const accent = CREDENTIAL_ACCENTS[trackId] ?? DEFAULT_ACCENT;
-  const trackName = TRACK_NAMES[trackId] ?? 'General';
+  const track = getTrack(String(trackId));
+  const trackName = track.name;
+  const TrackIcon = track.Icon;
 
   return (
     <Card className="overflow-hidden py-0">
@@ -78,22 +45,21 @@ export function CredentialPreview({
         {/* NFT mockup */}
         <div
           className={cn(
-            'relative flex size-32 items-center justify-center rounded-2xl bg-gradient-to-br ring-4 sm:size-36',
-            accent.gradient,
-            accent.ring,
+            'relative flex size-32 items-center justify-center rounded-2xl bg-gradient-to-br ring-4 ring-gold/40 sm:size-36',
+            track.artGradient,
           )}
         >
           {/* Inner decoration */}
           <div className="absolute inset-2 rounded-xl border border-white/20" />
           <div className="relative flex flex-col items-center gap-1">
-            <Shield className="size-10 text-white/90 sm:size-12" />
-            <span className="text-[10px] font-bold tracking-wider text-white/70 uppercase">
+            <TrackIcon className="size-10 text-white sm:size-12" />
+            <span className="text-[10px] font-bold tracking-wider text-white uppercase">
               {trackName}
             </span>
           </div>
 
           {/* Corner sparkle */}
-          <Sparkles className="absolute -top-1.5 -right-1.5 size-5 text-amber-400 drop-shadow-sm" />
+          <Sparkles className="absolute -top-1.5 -right-1.5 size-5 text-gold drop-shadow-sm" />
         </div>
 
         {/* Course name */}
