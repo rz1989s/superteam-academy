@@ -23,6 +23,8 @@ export interface Track {
   borderClass: string;
   /** Light tint gradient for image placeholders with NO overlaid text. */
   tintGradient: string;
+  /** AA-safe DARK gradient for surfaces that overlay WHITE text (hero, credential art). */
+  artGradient: string;
 }
 
 export const TRACKS: Record<TrackId, Track> = {
@@ -35,6 +37,7 @@ export const TRACKS: Record<TrackId, Track> = {
     badgeClass: 'bg-skyblue/10 text-link',
     borderClass: 'border-l-skyblue',
     tintGradient: 'from-skyblue/20 to-skyblue/5',
+    artGradient: 'from-link to-brown',
   },
   '2': {
     id: '2',
@@ -45,6 +48,7 @@ export const TRACKS: Record<TrackId, Track> = {
     badgeClass: 'bg-gold/20 text-clay-deep',
     borderClass: 'border-l-gold',
     tintGradient: 'from-gold/20 to-gold/5',
+    artGradient: 'from-clay-deep to-brown',
   },
   '3': {
     id: '3',
@@ -55,6 +59,7 @@ export const TRACKS: Record<TrackId, Track> = {
     badgeClass: 'bg-clay/15 text-clay-deep',
     borderClass: 'border-l-clay',
     tintGradient: 'from-clay/20 to-clay/5',
+    artGradient: 'from-clay-deep to-rust-deep',
   },
   '4': {
     id: '4',
@@ -65,6 +70,7 @@ export const TRACKS: Record<TrackId, Track> = {
     badgeClass: 'bg-rust/15 text-rust-deep',
     borderClass: 'border-l-rust',
     tintGradient: 'from-rust/15 to-rust/5',
+    artGradient: 'from-rust-deep to-brown',
   },
 };
 

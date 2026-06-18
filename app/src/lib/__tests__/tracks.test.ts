@@ -28,4 +28,13 @@ describe('tracks module', () => {
     expect(getTrack('security').id).toBe('4');
     expect(getTrack('does-not-exist').id).toBe('1');
   });
+
+  it('exposes an AA-safe dark artGradient (white text) for every track', () => {
+    const DARK_STOP = /^(from|to|via)-(link|clay-deep|rust-deep|green-deep|brown)$/;
+    for (const t of ALL_TRACKS) {
+      const stops = t.artGradient.trim().split(/\s+/);
+      expect(stops.length).toBeGreaterThanOrEqual(2);
+      for (const s of stops) expect(s).toMatch(DARK_STOP);
+    }
+  });
 });
