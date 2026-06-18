@@ -18,20 +18,8 @@ import {
 import { DifficultyBadge } from '@/components/courses/difficulty-badge';
 import { TrackBadge } from '@/components/courses/track-badge';
 import { cn } from '@/lib/utils';
+import { getTrack } from '@/lib/tracks';
 import type { CourseWithMeta } from '@/lib/stores/course-store';
-
-// ---------------------------------------------------------------------------
-// Track gradient map (shared with course-card.tsx pattern)
-// ---------------------------------------------------------------------------
-
-const TRACK_GRADIENTS: Record<number, string> = {
-  1: 'from-purple-600 via-violet-600 to-indigo-700',
-  2: 'from-blue-600 via-cyan-600 to-teal-600',
-  3: 'from-pink-600 via-rose-500 to-orange-500',
-  4: 'from-orange-600 via-amber-600 to-yellow-600',
-};
-
-const DEFAULT_GRADIENT = 'from-primary via-primary/80 to-accent';
 
 // ---------------------------------------------------------------------------
 // Types
@@ -47,7 +35,7 @@ interface CourseHeaderProps {
 
 export function CourseHeader({ course }: CourseHeaderProps) {
   const t = useTranslations('courses');
-  const gradient = TRACK_GRADIENTS[course.trackId] ?? DEFAULT_GRADIENT;
+  const gradient = getTrack(String(course.trackId)).artGradient;
 
   return (
     <div
