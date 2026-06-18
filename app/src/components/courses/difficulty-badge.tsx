@@ -7,15 +7,15 @@ import { cn } from '@/lib/utils';
 const DIFFICULTY_CONFIG = [
   {
     key: 'beginner' as const,
-    className: 'bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border-emerald-500/25',
+    className: 'border-leaf/30 bg-leaf/20 text-green-deep',
   },
   {
     key: 'intermediate' as const,
-    className: 'bg-amber-500/15 text-amber-700 dark:text-amber-400 border-amber-500/25',
+    className: 'border-gold/30 bg-gold/20 text-clay-deep',
   },
   {
     key: 'advanced' as const,
-    className: 'bg-red-500/15 text-red-700 dark:text-red-400 border-red-500/25',
+    className: 'border-rust/30 bg-rust/15 text-rust-deep',
   },
 ] as const;
 
