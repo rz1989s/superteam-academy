@@ -37,9 +37,9 @@ export function StreakCounter({
             className={cn(
               'flex items-center gap-1.5 transition-colors',
               isFreezeActiveToday
-                ? 'text-sky-400'
+                ? 'text-link'
                 : isActive
-                  ? 'text-orange-500'
+                  ? 'text-clay-deep'
                   : 'text-muted-foreground',
             )}
           >
@@ -47,7 +47,7 @@ export function StreakCounter({
               <Snowflake
                 className={cn(
                   'size-5 shrink-0 transition-all',
-                  'animate-pulse drop-shadow-[0_0_6px_rgba(56,189,248,0.5)]',
+                  'animate-pulse drop-shadow-[0_0_6px_rgba(65,207,255,0.5)]',
                 )}
                 fill="none"
               />
@@ -55,7 +55,7 @@ export function StreakCounter({
               <Flame
                 className={cn(
                   'size-5 shrink-0 transition-all',
-                  isActive && 'animate-pulse drop-shadow-[0_0_6px_rgba(249,115,22,0.5)]',
+                  isActive && 'animate-pulse drop-shadow-[0_0_6px_rgba(249,200,70,0.5)]',
                 )}
                 fill={isActive ? 'currentColor' : 'none'}
               />
@@ -73,7 +73,7 @@ export function StreakCounter({
             <p>Current: {currentStreak} days</p>
             <p>Best: {longestStreak} days</p>
             {isFreezeActiveToday && (
-              <p className="text-sky-400">{t('freeze_active')}</p>
+              <p className="text-link">{t('freeze_active')}</p>
             )}
           </div>
         </TooltipContent>
@@ -88,8 +88,8 @@ export function StreakCounter({
               onClick={onUseFreeze}
               className={cn(
                 'flex items-center gap-1 rounded-full px-2 py-0.5',
-                'bg-sky-500/10 text-sky-400 transition-colors',
-                'hover:bg-sky-500/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400/50',
+                'bg-skyblue/10 text-link transition-colors',
+                'hover:bg-skyblue/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-skyblue/50',
               )}
             >
               <Snowflake className="size-3.5" />
