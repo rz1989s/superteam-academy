@@ -144,11 +144,11 @@ export function LevelUpModal({ level, levelTitle, open, onClose }: LevelUpModalP
                   style={{ animationDelay: `${0.6 + i * 0.15}s` }}
                 >
                   {i % 3 === 0 ? (
-                    <Star className="size-4 shrink-0 text-amber-500" />
+                    <Star className="size-4 shrink-0 text-clay" />
                   ) : i % 3 === 1 ? (
                     <Sparkles className="size-4 shrink-0 text-primary" />
                   ) : (
-                    <Zap className="size-4 shrink-0 text-emerald-500" />
+                    <Zap className="size-4 shrink-0 text-leaf" />
                   )}
                   {perk}
                 </li>
