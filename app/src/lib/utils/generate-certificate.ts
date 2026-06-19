@@ -3,6 +3,8 @@
  * triggers a browser download. Zero external dependencies.
  */
 
+import { getCredentialTrack } from '@/lib/tracks';
+
 interface CertificateData {
   courseName: string;
   recipientWallet: string;
@@ -12,20 +14,6 @@ interface CertificateData {
 
 const CANVAS_WIDTH = 1200;
 const CANVAS_HEIGHT = 630;
-
-const TRACK_COLORS: Record<number, { start: string; end: string }> = {
-  0: { start: '#10b981', end: '#0d9488' }, // emerald -> teal
-  1: { start: '#3b82f6', end: '#4f46e5' }, // blue -> indigo
-  2: { start: '#a855f7', end: '#7c3aed' }, // purple -> violet
-  3: { start: '#f97316', end: '#f59e0b' }, // orange -> amber
-  4: { start: '#f43f5e', end: '#ec4899' }, // rose -> pink
-};
-
-function getTrackColors(trackId?: number): { start: string; end: string } {
-  if (trackId === undefined) return { start: '#7c3aed', end: '#6366f1' };
-  const keys = Object.keys(TRACK_COLORS);
-  return TRACK_COLORS[trackId % keys.length] ?? { start: '#7c3aed', end: '#6366f1' };
-}
 
 function truncateWallet(address: string): string {
   if (address.length <= 16) return address;
@@ -126,7 +114,7 @@ export function generateCertificateImage(data: CertificateData): void {
     throw new Error('Canvas 2D context not available');
   }
 
-  const { start, end } = getTrackColors(data.trackId);
+  const { from: start, to: end } = getCredentialTrack(data.trackId).artHex;
 
   // -- Background gradient --
   const bgGrad = ctx.createLinearGradient(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
