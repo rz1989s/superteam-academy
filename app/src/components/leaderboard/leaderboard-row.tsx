@@ -33,9 +33,9 @@ function truncateWallet(wallet: string): string {
 }
 
 const MEDAL_COLORS: Record<number, string> = {
-  1: 'text-yellow-500',
-  2: 'text-zinc-400',
-  3: 'text-amber-700 dark:text-amber-600',
+  1: 'text-gold',
+  2: 'text-clay',
+  3: 'text-rust',
 };
 
 export function LeaderboardRow({ entry, isCurrentUser }: LeaderboardRowProps) {
@@ -99,7 +99,7 @@ export function LeaderboardRow({ entry, isCurrentUser }: LeaderboardRowProps) {
       <TableCell className="hidden sm:table-cell">
         {(entry.streak ?? 0) > 0 ? (
           <div className="flex items-center gap-1">
-            <Flame className="size-4 text-orange-500" />
+            <Flame className="size-4 text-clay-deep" />
             <span className="text-sm font-medium tabular-nums">
               {entry.streak}
             </span>
