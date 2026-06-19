@@ -13,6 +13,7 @@ import { Separator } from '@/components/ui/separator';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { HintAccordion } from '@/components/challenges/hint-accordion';
 import { cn } from '@/lib/utils';
+import { difficultyClass } from '@/lib/difficulty';
 
 // ---------------------------------------------------------------------------
 // Types
@@ -39,12 +40,6 @@ interface MockChallenge {
 // ---------------------------------------------------------------------------
 // Mock data
 // ---------------------------------------------------------------------------
-
-const DIFFICULTY_STYLES = {
-  beginner: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400',
-  intermediate: 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400',
-  advanced: 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400',
-} as const;
 
 function getMockChallenge(_courseId: string): MockChallenge {
   return {
@@ -101,11 +96,8 @@ export function ChallengeInstructions({
         <div className="flex flex-col gap-2">
           <div className="flex items-center gap-2">
             <Badge
-              variant="secondary"
-              className={cn(
-                'text-xs capitalize',
-                DIFFICULTY_STYLES[challenge.difficulty],
-              )}
+              variant="outline"
+              className={cn('text-xs capitalize', difficultyClass(challenge.difficulty))}
             >
               {tc(challenge.difficulty)}
             </Badge>
