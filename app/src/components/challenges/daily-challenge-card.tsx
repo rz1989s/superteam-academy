@@ -4,6 +4,7 @@ import { useCallback, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Zap, CheckCircle2, Lock } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { difficultyClass } from '@/lib/difficulty';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import {
@@ -25,12 +26,6 @@ interface DailyChallengeCardProps {
   hasAttemptedToday: boolean;
   className?: string;
 }
-
-const DIFFICULTY_STYLES: Record<Difficulty, string> = {
-  beginner: 'bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border-emerald-500/25',
-  intermediate: 'bg-amber-500/15 text-amber-700 dark:text-amber-400 border-amber-500/25',
-  advanced: 'bg-red-500/15 text-red-700 dark:text-red-400 border-red-500/25',
-};
 
 export function DailyChallengeCard({
   title,
@@ -71,7 +66,7 @@ export function DailyChallengeCard({
               Daily Challenge
             </span>
           </div>
-          <Badge variant="outline" className={cn(DIFFICULTY_STYLES[difficulty])}>
+          <Badge variant="outline" className={cn(difficultyClass(difficulty))}>
             {difficulty}
           </Badge>
         </div>
