@@ -4,6 +4,7 @@ import { Zap, Calendar, Code2 } from 'lucide-react';
 import { Link } from '@/i18n/routing';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { PageHeader } from '@/components/ui/page-header';
 import { DailyChallengeCard } from '@/components/challenges/daily-challenge-card';
 import { PastChallenges } from '@/components/challenges/past-challenges';
 import { SpeedLeaderboard } from '@/components/challenges/speed-leaderboard';
@@ -21,7 +22,7 @@ export default function ChallengesPage() {
   const hasAttemptedToday = false;
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className="mx-auto flex w-full max-w-7xl flex-col gap-6">
       {/* Tab navigation */}
       <div className="flex items-center gap-2">
         <Button variant="secondary" size="sm" className="gap-1.5">
@@ -40,15 +41,10 @@ export default function ChallengesPage() {
       </div>
 
       {/* Page Header */}
-      <div>
-        <div className="flex items-center gap-2">
-          <Zap className="size-5 text-primary" />
-          <h1 className="text-2xl font-bold tracking-tight">Daily Challenges</h1>
-        </div>
-        <p className="mt-1 text-sm text-muted-foreground">
-          Test your skills with a new coding challenge every day. One attempt per day -- make it count.
-        </p>
-      </div>
+      <PageHeader
+        title="Daily Challenges"
+        description="Test your skills with a new coding challenge every day. One attempt per day -- make it count."
+      />
 
       {/* Rules banner */}
       <div className="flex items-start gap-3 rounded-lg border border-primary/20 bg-primary/5 p-4">
