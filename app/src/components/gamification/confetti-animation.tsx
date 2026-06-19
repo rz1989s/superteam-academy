@@ -29,17 +29,12 @@ interface Particle {
 const PARTICLE_COUNT = 50;
 const ANIMATION_DURATION_MS = 3000;
 
-const COLORS = [
-  '#FFD700', // gold
-  '#FF6B6B', // coral
-  '#4ECDC4', // teal
-  '#45B7D1', // sky
-  '#96CEB4', // mint
-  '#FFEAA7', // cream
-  '#DDA0DD', // plum
-  '#98D8C8', // seafoam
-  '#FF8A5C', // peach
-  '#A8E6CF', // sage
+export const COLORS = [
+  '#FFF7E1', // cream
+  '#F9C846', // gold
+  '#41CFFF', // sky
+  '#A8E063', // leaf
+  '#E58C2E', // clay
 ];
 
 const SHAPES: Particle['shape'][] = ['square', 'circle', 'strip'];
