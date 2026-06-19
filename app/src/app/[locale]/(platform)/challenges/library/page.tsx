@@ -18,6 +18,8 @@ import { ChallengeFilterSidebar, DEFAULT_FILTERS } from '@/components/challenges
 import { ChallengeGrid } from '@/components/challenges/challenge-grid';
 import { getAllChallenges, getChallengesByCategory } from '@/lib/challenges';
 import { cn } from '@/lib/utils';
+import { PageHeader } from '@/components/ui/page-header';
+import { challengeCategoryStyle } from '@/lib/challenge-categories';
 import type { ChallengeFilters } from '@/components/challenges/challenge-filter-sidebar';
 
 // ---------------------------------------------------------------------------
@@ -27,11 +29,11 @@ import type { ChallengeFilters } from '@/components/challenges/challenge-filter-
 const ALL_CHALLENGES = getAllChallenges();
 
 const CATEGORY_STATS = [
-  { key: 'solana-fundamentals', labelKey: 'solana_fundamentals', color: 'text-violet-400' },
-  { key: 'defi', labelKey: 'defi', color: 'text-emerald-400' },
-  { key: 'nft-metaplex', labelKey: 'nft_metaplex', color: 'text-amber-400' },
-  { key: 'security', labelKey: 'security', color: 'text-rose-400' },
-  { key: 'token-extensions', labelKey: 'token_extensions', color: 'text-fuchsia-400' },
+  { key: 'solana-fundamentals', labelKey: 'solana_fundamentals' },
+  { key: 'defi', labelKey: 'defi' },
+  { key: 'nft-metaplex', labelKey: 'nft_metaplex' },
+  { key: 'security', labelKey: 'security' },
+  { key: 'token-extensions', labelKey: 'token_extensions' },
 ] as const;
 
 const DIFFICULTY_ORDER = { beginner: 0, intermediate: 1, advanced: 2 };
@@ -101,7 +103,7 @@ export default function ChallengeLibraryPage() {
   }, [filters]);
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className="mx-auto flex w-full max-w-7xl flex-col gap-6">
       {/* Tab navigation */}
       <div className="flex items-center gap-2">
         <Link href="/challenges">
@@ -120,17 +122,7 @@ export default function ChallengeLibraryPage() {
       </div>
 
       {/* Page header */}
-      <div className="flex flex-col gap-1">
-        <div className="flex items-center gap-2">
-          <Code2 className="size-5 text-primary" />
-          <h1 className="text-2xl font-bold tracking-tight lg:text-3xl">
-            {t('library_title')}
-          </h1>
-        </div>
-        <p className="text-muted-foreground text-sm lg:text-base">
-          {t('library_description')}
-        </p>
-      </div>
+      <PageHeader title={t('library_title')} description={t('library_description')} />
 
       {/* Category stats row */}
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
@@ -145,7 +137,7 @@ export default function ChallengeLibraryPage() {
               filters.category === cat.key && 'border-primary bg-primary/5',
             )}
           >
-            <span className={cn('text-2xl font-bold', cat.color)}>
+            <span className={cn('text-2xl font-bold', challengeCategoryStyle(cat.key).statClass)}>
               {getChallengesByCategory(cat.key as Parameters<typeof getChallengesByCategory>[0]).length}
             </span>
             <span className="text-xs text-muted-foreground text-center leading-tight">
