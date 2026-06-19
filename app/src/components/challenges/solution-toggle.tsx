@@ -33,8 +33,8 @@ function SolutionCodeBlock({ code, language }: { code: string; language: string 
   const lines = code.split('\n');
 
   return (
-    <div className="overflow-hidden rounded-lg border border-neutral-200 dark:border-neutral-700">
-      <div className="flex items-center justify-between border-b border-neutral-200 bg-neutral-50 px-4 py-2 dark:border-neutral-700 dark:bg-neutral-800">
+    <div className="overflow-hidden rounded-lg border">
+      <div className="flex items-center justify-between border-b bg-muted px-4 py-2">
         <span className="text-xs font-medium text-muted-foreground">
           {language}
         </span>
@@ -45,7 +45,7 @@ function SolutionCodeBlock({ code, language }: { code: string; language: string 
         <pre className="font-mono text-sm leading-relaxed">
           {lines.map((line, i) => (
             <div key={i} className="flex">
-              <span className="mr-4 inline-block w-8 select-none text-right text-neutral-600">
+              <span className="mr-4 inline-block w-8 select-none text-right text-muted-foreground">
                 {i + 1}
               </span>
               <code className="text-[#d4d4d4]">{line || '\u00A0'}</code>
