@@ -15,6 +15,7 @@ import { CourseFilter } from '@/components/leaderboard/course-filter';
 import { PodiumTop3 } from '@/components/leaderboard/podium-top3';
 import { LeaderboardTable } from '@/components/leaderboard/leaderboard-table';
 import { YourRankSticky } from '@/components/leaderboard/your-rank-sticky';
+import { PageHeader } from '@/components/ui/page-header';
 
 export default function LeaderboardPage() {
   const t = useTranslations('leaderboard');
@@ -99,31 +100,29 @@ export default function LeaderboardPage() {
   );
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className="mx-auto flex w-full max-w-7xl flex-col gap-6">
       {/* Page Header */}
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <div>
-          <h1 className="text-2xl font-bold tracking-tight">{t('title')}</h1>
-          <p className="text-sm text-muted-foreground mt-1">
-            Compete with fellow learners and climb the ranks
-          </p>
-        </div>
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={handleRefresh}
-          disabled={isRefreshing || isLoading}
-          className="gap-1.5 self-start sm:self-auto"
-        >
-          <RefreshCw
-            className={cn(
-              'size-3.5',
-              (isRefreshing || isLoading) && 'animate-spin',
-            )}
-          />
-          Refresh
-        </Button>
-      </div>
+      <PageHeader
+        title={t('title')}
+        description="Compete with fellow learners and climb the ranks"
+        actions={
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={handleRefresh}
+            disabled={isRefreshing || isLoading}
+            className="gap-1.5"
+          >
+            <RefreshCw
+              className={cn(
+                'size-3.5',
+                (isRefreshing || isLoading) && 'animate-spin',
+              )}
+            />
+            Refresh
+          </Button>
+        }
+      />
 
       {/* Filters */}
       <div className="flex flex-wrap items-center gap-3">
