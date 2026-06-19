@@ -101,23 +101,23 @@ export function QuickStats({
     <div className={cn('grid gap-4 sm:grid-cols-2 lg:grid-cols-5', className)}>
       {/* Total XP */}
       <StatCard
-        icon={<Zap className="size-5 text-yellow-600 dark:text-yellow-400" />}
-        iconBg="bg-yellow-100 dark:bg-yellow-900/40"
+        icon={<Zap className="size-5 text-clay-deep" />}
+        iconBg="bg-gold/20"
         label={t('xp')}
         value={xp.toLocaleString()}
-        accent="text-yellow-600 dark:text-yellow-400"
+        accent="text-clay-deep"
       >
         <Progress value={xpProgress} className="mt-1.5 h-1.5" />
       </StatCard>
 
       {/* Current Level */}
       <StatCard
-        icon={<Shield className="size-5 text-blue-600 dark:text-blue-400" />}
-        iconBg="bg-blue-100 dark:bg-blue-900/40"
+        icon={<Shield className="size-5 text-link" />}
+        iconBg="bg-skyblue/10"
         label={t('level')}
         value={level}
         sublabel={levelTitle}
-        accent="text-blue-600 dark:text-blue-400"
+        accent="text-link"
       />
 
       {/* Day Streak */}
@@ -127,7 +127,7 @@ export function QuickStats({
             className={cn(
               'size-5',
               currentStreak > 0
-                ? 'text-orange-500'
+                ? 'text-clay-deep'
                 : 'text-muted-foreground',
             )}
             fill={currentStreak > 0 ? 'currentColor' : 'none'}
@@ -135,34 +135,34 @@ export function QuickStats({
         }
         iconBg={cn(
           currentStreak > 0
-            ? 'bg-orange-100 dark:bg-orange-900/40'
+            ? 'bg-clay/15'
             : 'bg-muted',
         )}
         label={t('streak')}
         value={currentStreak}
         accent={cn(
           currentStreak > 0
-            ? 'text-orange-500'
+            ? 'text-clay-deep'
             : 'text-muted-foreground',
         )}
       />
 
       {/* Courses Enrolled */}
       <StatCard
-        icon={<BookOpen className="size-5 text-emerald-600 dark:text-emerald-400" />}
-        iconBg="bg-emerald-100 dark:bg-emerald-900/40"
+        icon={<BookOpen className="size-5 text-green-deep" />}
+        iconBg="bg-leaf/20"
         label="Courses"
         value={enrolledCount}
-        accent="text-emerald-600 dark:text-emerald-400"
+        accent="text-green-deep"
       />
 
       {/* Leaderboard Rank */}
       <StatCard
-        icon={<Trophy className="size-5 text-purple-600 dark:text-purple-400" />}
-        iconBg="bg-purple-100 dark:bg-purple-900/40"
+        icon={<Trophy className="size-5 text-rust-deep" />}
+        iconBg="bg-rust/15"
         label={tLeaderboard('rank')}
         value={rank !== null ? `#${rank}` : '—'}
-        accent="text-purple-600 dark:text-purple-400"
+        accent="text-rust-deep"
       />
     </div>
   );
