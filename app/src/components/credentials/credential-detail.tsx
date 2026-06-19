@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import { generateCertificateImage } from '@/lib/utils/generate-certificate';
 import { cn } from '@/lib/utils';
+import { getCredentialTrack } from '@/lib/tracks';
 import { CLUSTER } from '@/lib/solana/constants';
 import type { Credential, VerificationResult } from '@/lib/solana/credentials';
 import { Badge } from '@/components/ui/badge';
@@ -22,22 +23,6 @@ import { Separator } from '@/components/ui/separator';
 import { VerificationBadge } from '@/components/credentials/verification-badge';
 import { CredentialAttributes } from '@/components/credentials/credential-attributes';
 import { ShareCredential } from '@/components/credentials/share-credential';
-
-const TRACK_GRADIENTS: Record<number, string> = {
-  0: 'from-emerald-500 to-teal-600',
-  1: 'from-blue-500 to-indigo-600',
-  2: 'from-purple-500 to-violet-600',
-  3: 'from-orange-500 to-amber-600',
-  4: 'from-rose-500 to-pink-600',
-};
-
-function getTrackGradient(trackId: number | undefined): string {
-  if (trackId === undefined) return 'from-zinc-500 to-zinc-600';
-  return (
-    TRACK_GRADIENTS[trackId % Object.keys(TRACK_GRADIENTS).length] ??
-    'from-zinc-500 to-zinc-600'
-  );
-}
 
 function truncateAddress(address: string): string {
   if (address.length <= 12) return address;
@@ -67,7 +52,7 @@ export function CredentialDetail({
 }: CredentialDetailProps) {
   const t = useTranslations('credentials');
   const [ownerCopied, setOwnerCopied] = useState(false);
-  const gradient = getTrackGradient(credential.attributes.trackId);
+  const gradient = getCredentialTrack(credential.attributes.trackId).artGradient;
   const explorerUrl = `https://explorer.solana.com/address/${credential.assetId}?cluster=${CLUSTER}`;
 
   const handleDownloadCertificate = useCallback(() => {
