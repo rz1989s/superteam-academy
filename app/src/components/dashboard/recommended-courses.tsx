@@ -3,6 +3,7 @@
 import { Sparkles, Clock, ArrowRight, Zap } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
+import { difficultyClass, type DifficultyLevel } from '@/lib/difficulty';
 import { Link } from '@/i18n/routing';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -37,7 +38,7 @@ const RECOMMENDED: RecommendedCourse[] = [
     difficulty: 'Beginner',
     estimatedHours: 4,
     xpReward: 500,
-    gradient: 'from-emerald-500/10 to-teal-500/10',
+    gradient: 'from-skyblue/20 to-skyblue/5',
   },
   {
     id: 'token-program',
@@ -47,7 +48,7 @@ const RECOMMENDED: RecommendedCourse[] = [
     difficulty: 'Intermediate',
     estimatedHours: 6,
     xpReward: 750,
-    gradient: 'from-blue-500/10 to-indigo-500/10',
+    gradient: 'from-gold/20 to-gold/5',
   },
   {
     id: 'anchor-basics',
@@ -57,15 +58,9 @@ const RECOMMENDED: RecommendedCourse[] = [
     difficulty: 'Intermediate',
     estimatedHours: 8,
     xpReward: 1000,
-    gradient: 'from-violet-500/10 to-purple-500/10',
+    gradient: 'from-clay/20 to-clay/5',
   },
 ];
-
-const DIFFICULTY_VARIANT: Record<string, 'secondary' | 'default' | 'destructive'> = {
-  Beginner: 'secondary',
-  Intermediate: 'default',
-  Advanced: 'destructive',
-};
 
 export function RecommendedCourses({ className }: RecommendedCoursesProps) {
   const t = useTranslations('dashboard');
@@ -111,8 +106,8 @@ export function RecommendedCourses({ className }: RecommendedCoursesProps) {
                   </p>
                   <div className="flex items-center gap-2 pt-1">
                     <Badge
-                      variant={DIFFICULTY_VARIANT[course.difficulty]}
-                      className="text-[10px]"
+                      variant="outline"
+                      className={cn('text-[10px]', difficultyClass(course.difficulty.toLowerCase() as DifficultyLevel))}
                     >
                       {course.difficulty}
                     </Badge>
@@ -120,7 +115,7 @@ export function RecommendedCourses({ className }: RecommendedCoursesProps) {
                       <Clock className="size-3" />
                       {course.estimatedHours}h
                     </span>
-                    <span className="flex items-center gap-0.5 text-[10px] text-yellow-600 dark:text-yellow-400">
+                    <span className="flex items-center gap-0.5 text-[10px] text-clay-deep">
                       <Zap className="size-3" />
                       {course.xpReward} XP
                     </span>
