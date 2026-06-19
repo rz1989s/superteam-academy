@@ -3,6 +3,7 @@
 import { Trophy, ArrowRight } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
+import { achievementRarityStyle, type AchievementRarity } from '@/lib/achievements';
 import { Link } from '@/i18n/routing';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -31,51 +32,51 @@ interface RecentAchievementsProps {
  * In production this would come from the backend/CMS.
  * For now we provide a deterministic mapping based on ID.
  */
-const ACHIEVEMENT_META: Record<string, { name: string; description: string; color: string }> = {
+const ACHIEVEMENT_META: Record<string, { name: string; description: string; rarity: AchievementRarity }> = {
   'first-lesson': {
     name: 'First Steps',
     description: 'Completed your first lesson',
-    color: 'from-emerald-400 to-emerald-600',
+    rarity: 'common',
   },
   'first-course': {
     name: 'Scholar',
     description: 'Completed your first course',
-    color: 'from-blue-400 to-blue-600',
+    rarity: 'common',
   },
   'streak-7': {
     name: 'On Fire',
     description: '7-day learning streak',
-    color: 'from-orange-400 to-orange-600',
+    rarity: 'rare',
   },
   'streak-30': {
     name: 'Unstoppable',
     description: '30-day learning streak',
-    color: 'from-red-400 to-red-600',
+    rarity: 'epic',
   },
   'streak-100': {
     name: 'Legendary Streak',
     description: '100-day learning streak',
-    color: 'from-amber-500 to-red-700',
+    rarity: 'legendary',
   },
   'xp-1000': {
     name: 'XP Hunter',
     description: 'Earned 1,000 XP',
-    color: 'from-yellow-400 to-yellow-600',
+    rarity: 'rare',
   },
   'xp-5000': {
     name: 'XP Legend',
     description: 'Earned 5,000 XP',
-    color: 'from-amber-400 to-amber-600',
+    rarity: 'legendary',
   },
   'first-credential': {
     name: 'Certified',
     description: 'Earned your first credential NFT',
-    color: 'from-violet-400 to-violet-600',
+    rarity: 'epic',
   },
   'all-beginner': {
     name: 'Foundation',
     description: 'Completed all beginner courses',
-    color: 'from-teal-400 to-teal-600',
+    rarity: 'rare',
   },
 };
 
@@ -84,13 +85,14 @@ function getAchievementMeta(id: string) {
     ACHIEVEMENT_META[id] ?? {
       name: id.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase()),
       description: 'Achievement unlocked',
-      color: 'from-zinc-400 to-zinc-600',
+      rarity: 'common' as AchievementRarity,
     }
   );
 }
 
 function AchievementBadge({ id }: { id: string }) {
   const meta = getAchievementMeta(id);
+  const style = achievementRarityStyle(meta.rarity);
 
   return (
     <div className="flex flex-col items-center gap-1">
@@ -99,11 +101,12 @@ function AchievementBadge({ id }: { id: string }) {
           <div className="flex flex-col items-center gap-1.5 group cursor-pointer">
             <div
               className={cn(
-                'flex size-12 items-center justify-center rounded-full bg-gradient-to-br shadow-sm transition-transform group-hover:scale-110',
-                meta.color,
+                'flex size-12 items-center justify-center rounded-full transition-transform group-hover:scale-110',
+                style.badgeClass,
+                style.ringClass,
               )}
             >
-              <Trophy className="size-5 text-white" />
+              <Trophy className={cn('size-5', style.iconClass)} />
             </div>
             <span className="max-w-[72px] truncate text-center text-[10px] font-medium text-muted-foreground">
               {meta.name}
