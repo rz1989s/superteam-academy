@@ -21,10 +21,8 @@ const RADIUS = 110;
 const RING_COUNT = 4;
 
 const SKILL_COLORS = {
-  fill: 'rgba(139, 92, 246, 0.25)',
-  stroke: 'rgba(139, 92, 246, 0.8)',
-  fillDark: 'rgba(167, 139, 250, 0.2)',
-  strokeDark: 'rgba(167, 139, 250, 0.75)',
+  fill: 'rgba(65, 207, 255, 0.25)',
+  stroke: 'rgba(65, 207, 255, 0.85)',
 };
 
 /**
@@ -139,24 +137,14 @@ export function SkillRadar({ skills, className }: SkillRadarProps) {
           />
         ))}
 
-        {/* Data polygon - light mode */}
+        {/* Data polygon */}
         <polygon
           points={dataPolygon}
           fill={SKILL_COLORS.fill}
           stroke={SKILL_COLORS.stroke}
           strokeWidth={2}
           strokeLinejoin="round"
-          className="dark:hidden transition-all duration-500"
-        />
-
-        {/* Data polygon - dark mode */}
-        <polygon
-          points={dataPolygon}
-          fill={SKILL_COLORS.fillDark}
-          stroke={SKILL_COLORS.strokeDark}
-          strokeWidth={2}
-          strokeLinejoin="round"
-          className="hidden dark:block transition-all duration-500"
+          className="transition-all duration-500"
         />
 
         {/* Data point dots */}
@@ -168,7 +156,7 @@ export function SkillRadar({ skills, className }: SkillRadarProps) {
               cx={cx}
               cy={cy}
               r={3.5}
-              className="fill-violet-500 dark:fill-violet-400 stroke-background"
+              className="fill-skyblue stroke-background"
               strokeWidth={2}
             />
           );
