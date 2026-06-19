@@ -14,6 +14,7 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import type { Credential } from '@/lib/solana/credentials';
+import { getCredentialTrack } from '@/lib/tracks';
 
 interface CredentialGalleryProps {
   credentials: Credential[];
@@ -21,28 +22,15 @@ interface CredentialGalleryProps {
   className?: string;
 }
 
-const TRACK_GRADIENTS: Record<number, string> = {
-  0: 'from-emerald-500 to-teal-600',
-  1: 'from-blue-500 to-indigo-600',
-  2: 'from-purple-500 to-violet-600',
-  3: 'from-orange-500 to-amber-600',
-  4: 'from-rose-500 to-pink-600',
-};
-
 const LEVEL_LABELS: Record<number, string> = {
   0: 'Beginner',
   1: 'Intermediate',
   2: 'Advanced',
 };
 
-function getTrackGradient(trackId: number | undefined): string {
-  if (trackId === undefined) return 'from-zinc-500 to-zinc-600';
-  return TRACK_GRADIENTS[trackId % Object.keys(TRACK_GRADIENTS).length] ?? 'from-zinc-500 to-zinc-600';
-}
-
 function CredentialCard({ credential }: { credential: Credential }) {
   const tCredentials = useTranslations('credentials');
-  const gradient = getTrackGradient(credential.attributes.trackId);
+  const gradient = getCredentialTrack(credential.attributes.trackId).artGradient;
   const level = credential.attributes.level;
   const explorerUrl = `https://explorer.solana.com/address/${credential.assetId}?cluster=devnet`;
 
