@@ -33,9 +33,9 @@ const MOCK_SPEED_ENTRIES: SpeedEntry[] = [
 ];
 
 const RANK_STYLES: Record<number, string> = {
-  1: 'text-clay-deep',
-  2: 'text-muted-foreground',
-  3: 'text-rust-deep',
+  1: 'bg-gold/20 ring-1 ring-gold/50 text-clay-deep',
+  2: 'bg-clay/15 ring-1 ring-clay/40 text-clay-deep',
+  3: 'bg-rust/15 ring-1 ring-rust/40 text-rust-deep',
 };
 
 function formatTime(seconds: number): string {
@@ -99,13 +99,21 @@ export function SpeedLeaderboard({ className }: SpeedLeaderboardProps) {
                     : 'hover:bg-muted/50',
                 )}
               >
-                <span
-                  className={cn(
-                    'w-8 font-semibold tabular-nums',
-                    RANK_STYLES[entry.rank] ?? 'text-muted-foreground',
+                <span className="flex w-8 shrink-0 justify-center">
+                  {RANK_STYLES[entry.rank] ? (
+                    <span
+                      className={cn(
+                        'flex size-6 items-center justify-center rounded-full text-xs font-bold tabular-nums',
+                        RANK_STYLES[entry.rank],
+                      )}
+                    >
+                      {entry.rank}
+                    </span>
+                  ) : (
+                    <span className="font-semibold tabular-nums text-muted-foreground">
+                      {entry.rank}
+                    </span>
                   )}
-                >
-                  {entry.rank}
                 </span>
                 <span className="flex-1 truncate font-mono text-xs">
                   {entry.wallet}
