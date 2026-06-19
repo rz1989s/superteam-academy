@@ -67,28 +67,28 @@ export function XpToast({ amount }: XpToastProps) {
       aria-live="polite"
       className={cn(
         'fixed top-6 right-6 z-[9998] flex items-center gap-2.5 rounded-xl border px-5 py-3 shadow-2xl transition-all duration-500 motion-reduce:transition-none',
-        'border-amber-400/40 bg-gradient-to-r from-amber-50 to-yellow-50 dark:from-amber-950/90 dark:to-yellow-950/90 dark:border-amber-500/30',
+        'border-gold/40 bg-gold/20',
         phase === 'enter' && 'translate-y-[-20px] scale-90 opacity-0',
         phase === 'visible' && 'translate-y-0 scale-100 opacity-100',
         phase === 'exit' && 'translate-y-[-10px] scale-95 opacity-0',
       )}
     >
       {/* Sparkle icon */}
-      <div className="flex size-9 items-center justify-center rounded-full bg-gradient-to-br from-amber-400 to-yellow-500 shadow-inner">
-        <Sparkles className="size-5 text-white" />
+      <div className="flex size-9 items-center justify-center rounded-full bg-gold shadow-inner">
+        <Sparkles className="size-5 text-clay-deep" />
       </div>
 
       {/* XP amount — scale-bounce on the value for emphasis */}
       <div className="flex flex-col gap-0.5">
         <span
           className={cn(
-            'text-lg font-bold tabular-nums tracking-tight text-amber-700 dark:text-amber-300 motion-reduce:animate-none',
+            'text-lg font-bold tabular-nums tracking-tight text-clay-deep motion-reduce:animate-none',
             phase === 'visible' && 'animate-scale-bounce',
           )}
         >
           +{amount.toLocaleString()} XP
         </span>
-        <span className="text-xs text-amber-600/70 dark:text-amber-400/70">
+        <span className="text-xs text-clay-deep">
           Lesson completed
         </span>
       </div>
@@ -98,7 +98,7 @@ export function XpToast({ amount }: XpToastProps) {
         {SPARKLE_PARTICLES.map((p, i) => (
           <span
             key={i}
-            className="absolute animate-xp-sparkle rounded-full bg-amber-400/50"
+            className="absolute animate-xp-sparkle rounded-full bg-gold/50"
             style={{
               width: p.width,
               height: p.height,
