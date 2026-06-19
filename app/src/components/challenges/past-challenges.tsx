@@ -3,6 +3,7 @@
 import { useMemo, useState } from 'react';
 import { CheckCircle2, XCircle, MinusCircle, Filter } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { difficultyClass } from '@/lib/difficulty';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import {
@@ -24,12 +25,6 @@ interface PastChallenge {
   result: ChallengeResult;
   timeTaken?: number; // seconds, if attempted
 }
-
-const DIFFICULTY_STYLES: Record<Difficulty, string> = {
-  beginner: 'bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border-emerald-500/25',
-  intermediate: 'bg-amber-500/15 text-amber-700 dark:text-amber-400 border-amber-500/25',
-  advanced: 'bg-red-500/15 text-red-700 dark:text-red-400 border-red-500/25',
-};
 
 const RESULT_CONFIG: Record<ChallengeResult, {
   label: string;
@@ -197,7 +192,7 @@ export function PastChallenges({ className }: PastChallengesProps) {
                   </div>
                   <Badge
                     variant="outline"
-                    className={cn('shrink-0', DIFFICULTY_STYLES[challenge.difficulty])}
+                    className={cn('shrink-0', difficultyClass(challenge.difficulty))}
                   >
                     {challenge.difficulty}
                   </Badge>
