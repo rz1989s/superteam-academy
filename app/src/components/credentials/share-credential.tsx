@@ -42,7 +42,7 @@ function QrPlaceholder({ size = 120 }: { size?: number }) {
       width={size}
       height={size}
       viewBox={`0 0 ${size} ${size}`}
-      className="rounded-md border bg-white dark:bg-zinc-900"
+      className="rounded-md border bg-card"
       aria-hidden="true"
     >
       {pattern.map((row, y) =>
