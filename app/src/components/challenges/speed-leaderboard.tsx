@@ -33,9 +33,9 @@ const MOCK_SPEED_ENTRIES: SpeedEntry[] = [
 ];
 
 const RANK_STYLES: Record<number, string> = {
-  1: 'text-amber-500',
-  2: 'text-slate-400',
-  3: 'text-amber-700 dark:text-amber-600',
+  1: 'text-clay-deep',
+  2: 'text-muted-foreground',
+  3: 'text-rust-deep',
 };
 
 function formatTime(seconds: number): string {
@@ -62,7 +62,7 @@ export function SpeedLeaderboard({ className }: SpeedLeaderboardProps) {
     <Card className={cn('py-0', className)}>
       <CardHeader className="pt-4 px-4 pb-2">
         <div className="flex items-center gap-2">
-          <Trophy className="size-4 text-amber-500" />
+          <Trophy className="size-4 text-clay-deep" />
           <CardTitle className="text-base">Speed Leaderboard</CardTitle>
           <span className="ml-auto text-xs text-muted-foreground">Today</span>
         </div>
