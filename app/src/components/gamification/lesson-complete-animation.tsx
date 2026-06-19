@@ -116,7 +116,7 @@ export function LessonCompleteAnimation({ xp, onComplete }: LessonCompleteAnimat
       {/* Floating XP text */}
       <span
         className={cn(
-          'absolute -top-1 left-1/2 -translate-x-1/2 text-sm font-bold tabular-nums text-emerald-600 dark:text-emerald-400',
+          'absolute -top-1 left-1/2 -translate-x-1/2 text-sm font-bold tabular-nums text-clay-deep',
           'animate-float-up-fade',
         )}
         style={{ opacity: 0 }}
