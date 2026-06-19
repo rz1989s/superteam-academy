@@ -7,12 +7,13 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover';
+import { achievementRarityStyle, type AchievementRarity } from '@/lib/achievements';
 
 export interface AchievementDefinition {
   id: string;
   name: string;
   description: string;
-  color: string;
+  rarity: AchievementRarity;
 }
 
 interface AchievementBadgeProps {
@@ -26,6 +27,8 @@ export function AchievementBadge({
   isEarned,
   earnedDate,
 }: AchievementBadgeProps) {
+  const style = achievementRarityStyle(achievement.rarity);
+
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -43,16 +46,12 @@ export function AchievementBadge({
               className={cn(
                 'flex size-14 items-center justify-center rounded-full transition-all',
                 isEarned
-                  ? cn(
-                    'bg-gradient-to-br shadow-lg',
-                    achievement.color,
-                    'shadow-current/20',
-                  )
+                  ? cn(style.badgeClass, style.ringClass, 'shadow-sm')
                   : 'bg-muted border-2 border-dashed border-muted-foreground/30',
               )}
             >
               {isEarned ? (
-                <Trophy className="size-6 text-white drop-shadow-sm" />
+                <Trophy className={cn('size-6', style.iconClass)} />
               ) : (
                 <Lock className="size-5 text-muted-foreground/50" />
               )}
@@ -92,12 +91,12 @@ export function AchievementBadge({
               className={cn(
                 'flex size-8 shrink-0 items-center justify-center rounded-full',
                 isEarned
-                  ? cn('bg-gradient-to-br', achievement.color)
+                  ? cn(style.badgeClass, style.ringClass)
                   : 'bg-muted',
               )}
             >
               {isEarned ? (
-                <Trophy className="size-3.5 text-white" />
+                <Trophy className={cn('size-3.5', style.iconClass)} />
               ) : (
                 <Lock className="size-3.5 text-muted-foreground" />
               )}
@@ -115,7 +114,7 @@ export function AchievementBadge({
             {achievement.description}
           </p>
           {!isEarned && (
-            <p className="text-[10px] font-medium text-amber-600 dark:text-amber-400">
+            <p className="text-[10px] font-medium text-clay-deep">
               Keep learning to unlock this achievement
             </p>
           )}
