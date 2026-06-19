@@ -35,7 +35,7 @@ const SPARKLE_PARTICLES = [
 /**
  * Floating XP award toast with entrance/exit animation.
  * Renders as a fixed-position element rather than using sonner
- * for a custom branded appearance with gold/amber theming.
+ * for a custom branded appearance with gold/clay theming.
  */
 export function XpToast({ amount }: XpToastProps) {
   const [phase, setPhase] = useState<'enter' | 'visible' | 'exit' | 'gone'>('enter');
