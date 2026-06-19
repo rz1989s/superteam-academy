@@ -3,6 +3,7 @@
 import { BookOpen, ArrowRight } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
+import { difficultyClass } from '@/lib/difficulty';
 import { Link } from '@/i18n/routing';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -28,12 +29,6 @@ const DIFFICULTY_LABELS: Record<number, string> = {
   0: 'Beginner',
   1: 'Intermediate',
   2: 'Advanced',
-};
-
-const DIFFICULTY_VARIANTS: Record<number, 'default' | 'secondary' | 'destructive'> = {
-  0: 'secondary',
-  1: 'default',
-  2: 'destructive',
 };
 
 function CourseCardSkeleton() {
@@ -124,8 +119,8 @@ export function ContinueLearning({
                   <div className="flex items-center gap-2">
                     <p className="truncate text-sm font-medium">{title}</p>
                     <Badge
-                      variant={DIFFICULTY_VARIANTS[difficulty]}
-                      className="text-[10px] shrink-0"
+                      variant="outline"
+                      className={cn('text-[10px] shrink-0', difficultyClass(difficulty))}
                     >
                       {DIFFICULTY_LABELS[difficulty]}
                     </Badge>
