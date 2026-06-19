@@ -76,10 +76,10 @@ function generateMockData(): DayData[] {
 
 function getIntensityClass(count: number): string {
   if (count === 0) return 'bg-muted';
-  if (count <= 1) return 'bg-emerald-200 dark:bg-emerald-900';
-  if (count <= 3) return 'bg-emerald-400 dark:bg-emerald-700';
-  if (count <= 5) return 'bg-emerald-500 dark:bg-emerald-500';
-  return 'bg-emerald-700 dark:bg-emerald-400';
+  if (count <= 1) return 'bg-leaf/30';
+  if (count <= 3) return 'bg-leaf/60';
+  if (count <= 5) return 'bg-leaf';
+  return 'bg-green-deep';
 }
 
 function formatDate(dateStr: string): string {
