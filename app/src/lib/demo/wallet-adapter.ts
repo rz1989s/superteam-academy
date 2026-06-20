@@ -46,6 +46,11 @@ export class DemoWalletAdapter extends BaseMessageSignerWalletAdapter {
     this._connecting = true;
     this._publicKey = new PublicKey(DEMO_WALLET);
     this._connecting = false;
+    // Defer the emit by a microtask. wallet-adapter-react attaches its
+    // 'connect' listener in a PARENT effect, which React runs AFTER our child
+    // auto-connect effect — a synchronous emit would fire before the listener
+    // exists and be lost (leaving `connected` false and the effect looping).
+    await Promise.resolve();
     this.emit('connect', this._publicKey);
   }
 
