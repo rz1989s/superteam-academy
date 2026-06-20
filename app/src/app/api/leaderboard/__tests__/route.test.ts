@@ -1,6 +1,7 @@
 // @vitest-environment node
 import { describe, it, expect, vi, afterEach } from "vitest";
 import { PublicKey } from "@solana/web3.js";
+import { DEMO_LEADERBOARD } from "@/lib/demo/seed";
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
@@ -54,6 +55,7 @@ async function importRoute(rpcUrl = HELIUS_URL) {
 afterEach(() => {
   vi.restoreAllMocks();
   vi.unstubAllGlobals();
+  vi.unstubAllEnvs();
   vi.useRealTimers();
 });
 
@@ -191,5 +193,21 @@ describe("GET /api/leaderboard", () => {
 
     expect(response.status).toBe(500);
     expect(data.error).toBe("Failed to fetch leaderboard");
+  });
+
+  it("returns the seed cohort in demo mode (no fetch, no dasUnavailable)", async () => {
+    vi.stubEnv("NEXT_PUBLIC_DEMO_MODE", "true");
+    const fetchMock = vi.fn();
+    vi.stubGlobal("fetch", fetchMock);
+    const GET = await importRoute(NON_HELIUS_URL); // url irrelevant — demo short-circuits
+
+    const response = await GET();
+    const data = await response.json();
+
+    expect(data.entries).toHaveLength(DEMO_LEADERBOARD.length);
+    expect(data.entries[0].rank).toBe(1);
+    expect(data.total).toBe(DEMO_LEADERBOARD.length);
+    expect(data.dasUnavailable).toBeUndefined();
+    expect(fetchMock).not.toHaveBeenCalled();
   });
 });

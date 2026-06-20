@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server';
 import { HELIUS_RPC_SERVER, XP_MINT } from '@/lib/solana/constants';
+import { isDemoMode } from '@/lib/demo';
+import { DEMO_LEADERBOARD } from '@/lib/demo/seed';
 
 /**
  * GET /api/leaderboard
@@ -31,6 +33,14 @@ let cachedLeaderboard: CachedLeaderboard | null = null;
 const CACHE_TTL = 60_000; // 60 seconds
 
 export async function GET() {
+  // Demo mode: serve the seed cohort (no RPC, no cache, no dasUnavailable flag).
+  if (isDemoMode()) {
+    return NextResponse.json({
+      entries: DEMO_LEADERBOARD,
+      total: DEMO_LEADERBOARD.length,
+    });
+  }
+
   if (cachedLeaderboard && Date.now() - cachedLeaderboard.timestamp < CACHE_TTL) {
     return NextResponse.json(cachedLeaderboard.data);
   }
