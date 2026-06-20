@@ -1,5 +1,7 @@
 import { HELIUS_RPC } from './constants';
 import { configPda } from './pda';
+import { isDemoMode } from '@/lib/demo';
+import { DEMO_CREDENTIALS, DEMO_WALLET } from '@/lib/demo/seed';
 
 // ---------------------------------------------------------------------------
 // Helius DAS API response types (minimal — only fields we access)
@@ -82,6 +84,12 @@ export interface VerificationResult {
  * Filters for Metaplex Core assets belonging to academy collections.
  */
 export async function getCredentialsByOwner(ownerAddress: string): Promise<Credential[]> {
+  if (isDemoMode()) {
+    return ownerAddress === DEMO_WALLET
+      ? DEMO_CREDENTIALS
+      : DEMO_CREDENTIALS.filter((c) => c.owner === ownerAddress);
+  }
+
   const response = await fetch(HELIUS_RPC, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -111,6 +119,10 @@ export async function getCredentialsByOwner(ownerAddress: string): Promise<Crede
  * Fetch a single credential by its on-chain asset ID via Helius DAS getAsset.
  */
 export async function getCredentialById(assetId: string): Promise<Credential | null> {
+  if (isDemoMode()) {
+    return DEMO_CREDENTIALS.find((c) => c.assetId === assetId) ?? null;
+  }
+
   const response = await fetch(HELIUS_RPC, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },

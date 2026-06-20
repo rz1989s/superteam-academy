@@ -6,6 +6,7 @@ import {
   verifyCredential,
   mapDasAssetToCredential,
 } from '../credentials';
+import { DEMO_WALLET, DEMO_CREDENTIALS } from '@/lib/demo/seed';
 
 // Mock global.fetch for all DAS API calls
 const mockFetch = vi.fn();
@@ -54,6 +55,7 @@ beforeEach(() => {
 
 afterEach(() => {
   vi.restoreAllMocks();
+  vi.unstubAllEnvs();
 });
 
 // ─── getCredentialsByOwner ──────────────────────────────────────────────────
@@ -288,5 +290,30 @@ describe('mapDasAssetToCredential', () => {
 
     const result = mapDasAssetToCredential(asset);
     expect(result.collection).toBe('MyCollection123');
+  });
+});
+
+// ─── demo mode ──────────────────────────────────────────────────────────────
+
+describe('credentials in demo mode', () => {
+  it('returns the seed credentials for the demo wallet without calling fetch', async () => {
+    vi.stubEnv('NEXT_PUBLIC_DEMO_MODE', 'true');
+    const result = await getCredentialsByOwner(DEMO_WALLET);
+    expect(result).toHaveLength(DEMO_CREDENTIALS.length);
+    expect(result[0]!.owner).toBe(DEMO_WALLET);
+    expect(mockFetch).not.toHaveBeenCalled();
+  });
+
+  it('resolves a single seed credential by id', async () => {
+    vi.stubEnv('NEXT_PUBLIC_DEMO_MODE', 'true');
+    const result = await getCredentialById(DEMO_CREDENTIALS[0]!.assetId);
+    expect(result?.assetId).toBe(DEMO_CREDENTIALS[0]!.assetId);
+    expect(mockFetch).not.toHaveBeenCalled();
+  });
+
+  it('returns null for an unknown id in demo mode', async () => {
+    vi.stubEnv('NEXT_PUBLIC_DEMO_MODE', 'true');
+    const result = await getCredentialById('nonexistent-asset');
+    expect(result).toBeNull();
   });
 });
