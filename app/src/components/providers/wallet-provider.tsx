@@ -9,13 +9,15 @@ import {
 import { HELIUS_RPC } from '@/lib/solana/constants';
 import { isDemoMode } from '@/lib/demo';
 import { DemoWalletAdapter, DemoWalletName } from '@/lib/demo/wallet-adapter';
+import { useUserStore } from '@/lib/stores/user-store';
 
 /**
  * In demo mode, auto-select and connect the read-only demo wallet so every
  * useWallet() consumer behaves as a signed-in learner with zero interaction.
  */
 function DemoAutoConnect() {
-  const { select, wallet, connect, connected, connecting } = useWallet();
+  const { select, wallet, connect, connected, connecting, publicKey } = useWallet();
+  const fetchUserData = useUserStore((s) => s.fetchUserData);
 
   useEffect(() => {
     if (!wallet) {
@@ -30,6 +32,15 @@ function DemoAutoConnect() {
       });
     }
   }, [wallet, connected, connecting, connect]);
+
+  // Seed the user store app-wide once connected, so every page (not just the
+  // ones that fetch on mount) shows the demo learner's XP / streak / credentials
+  // / achievements with no empty states.
+  useEffect(() => {
+    if (connected && publicKey) {
+      fetchUserData(publicKey);
+    }
+  }, [connected, publicKey, fetchUserData]);
 
   return null;
 }
