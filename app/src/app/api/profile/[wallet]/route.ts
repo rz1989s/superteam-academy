@@ -6,6 +6,8 @@ import {
   TOKEN_2022_PROGRAM_ID,
 } from '@/lib/solana/constants';
 import { calculateLevel, getLevelTitle } from '@/lib/solana/xp';
+import { isDemoMode } from '@/lib/demo';
+import { DEMO_PROFILE, DEMO_LEADERBOARD } from '@/lib/demo/seed';
 
 const ASSOCIATED_TOKEN_PROGRAM_ID = new PublicKey(
   'ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL',
@@ -31,6 +33,15 @@ export async function GET(
       { error: 'Invalid wallet address' },
       { status: 400 },
     );
+  }
+
+  // Demo mode: serve the seed profile (looked up in the cohort, else the
+  // demo identity) instead of reading on-chain XP.
+  if (isDemoMode()) {
+    const entry = DEMO_LEADERBOARD.find((e) => e.wallet === wallet);
+    const xp = entry ? entry.xpBalance : DEMO_PROFILE.xp;
+    const level = calculateLevel(xp);
+    return NextResponse.json({ wallet, xp, level, levelTitle: getLevelTitle(level) });
   }
 
   try {
