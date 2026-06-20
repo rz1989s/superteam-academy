@@ -8,6 +8,14 @@ import { getConnection } from '@/lib/solana/program';
 import { XP_MINT, TOKEN_2022_PROGRAM_ID } from '@/lib/solana/constants';
 import { calculateLevel, getLevelTitle } from '@/lib/solana/xp';
 import { countCompletedLessons, getProgressPercentage } from '@/lib/solana/bitmap';
+import { isDemoMode } from '@/lib/demo';
+import {
+  DEMO_PROFILE,
+  DEMO_STREAK,
+  DEMO_CREDENTIALS,
+  DEMO_ACHIEVEMENTS,
+  DEMO_ENROLLMENTS,
+} from '@/lib/demo/seed';
 
 interface StreakState {
   currentStreak: number;
@@ -153,6 +161,24 @@ export const useUserStore = create<UserState>((set, get) => ({
   },
 
   fetchUserData: async (wallet) => {
+    // Demo mode: populate the current learner from seed fixtures instead of
+    // reading on-chain XP / credentials / enrollments.
+    if (isDemoMode()) {
+      set({
+        wallet,
+        xpBalance: DEMO_PROFILE.xp,
+        level: DEMO_PROFILE.level,
+        levelTitle: DEMO_PROFILE.levelTitle,
+        streak: DEMO_STREAK,
+        credentials: DEMO_CREDENTIALS,
+        achievements: DEMO_ACHIEVEMENTS,
+        enrollments: new Map(DEMO_ENROLLMENTS.map((e) => [e.courseId, e])),
+        isLoading: false,
+        error: null,
+      });
+      return;
+    }
+
     set({ isLoading: true, error: null });
 
     try {

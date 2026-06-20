@@ -47,6 +47,8 @@ Object.defineProperty(globalThis, 'localStorage', { value: localStorageMock, wri
 const { useUserStore } = await import('../user-store');
 const { getCredentialsByOwner } = await import('@/lib/solana/credentials');
 const { fetchUserEnrollments } = await import('@/lib/solana/accounts');
+const { DEMO_PROFILE, DEMO_CREDENTIALS, DEMO_ACHIEVEMENTS, DEMO_WALLET } =
+  await import('@/lib/demo/seed');
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -95,6 +97,26 @@ beforeEach(() => {
 
 afterEach(() => {
   vi.restoreAllMocks();
+  vi.unstubAllEnvs();
+});
+
+describe('User Store — demo mode', () => {
+  it('populates from seed fixtures and skips on-chain reads', async () => {
+    vi.stubEnv('NEXT_PUBLIC_DEMO_MODE', 'true');
+
+    await useUserStore.getState().fetchUserData(new PublicKey(DEMO_WALLET));
+
+    const s = useUserStore.getState();
+    expect(s.xpBalance).toBe(DEMO_PROFILE.xp);
+    expect(s.level).toBe(DEMO_PROFILE.level);
+    expect(s.levelTitle).toBe(DEMO_PROFILE.levelTitle);
+    expect(s.credentials).toHaveLength(DEMO_CREDENTIALS.length);
+    expect(s.achievements).toEqual(DEMO_ACHIEVEMENTS);
+    expect(s.enrollments.get('solana-101')?.isFinalized).toBe(true);
+    expect(s.isLoading).toBe(false);
+    expect(getCredentialsByOwner).not.toHaveBeenCalled();
+    expect(fetchUserEnrollments).not.toHaveBeenCalled();
+  });
 });
 
 describe('User Store — Initial state', () => {
