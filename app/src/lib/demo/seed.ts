@@ -9,8 +9,12 @@ import { calculateLevel, getLevelTitle } from '@/lib/solana/xp';
  * No values touch the network — the demo never breaks and screenshots reproduce.
  */
 
-/** Fixed devnet learner identity for the demo. Never signs (signing is disabled). */
-export const DEMO_WALLET = 'ACAd3USj2sMV6drKcMY2wZtNkhVDHWpC4tfJe93hgqYn';
+/**
+ * Fixed devnet learner identity for the demo. Never signs (signing is disabled).
+ * Deliberately NOT the program AUTHORITY / a creator wallet, so the admin
+ * console and creator dashboard stay locked behind their existing gates.
+ */
+export const DEMO_WALLET = '4WcCdCQajf7tDLsPbAdSpdySN1c2WwXx8XnBhR8Sn3SA';
 
 const DEMO_XP = 6400; // calculateLevel(6400) === 8 → "Master" (level-badge prestige tier)
 
