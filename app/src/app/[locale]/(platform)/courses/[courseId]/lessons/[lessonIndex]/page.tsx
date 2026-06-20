@@ -49,7 +49,7 @@ const OutputPanel = dynamic(
   },
 );
 import { useEnrollment } from '@/lib/hooks/use-enrollment';
-import { useCourseStore } from '@/lib/stores/course-store';
+import { useCourse } from '@/lib/hooks/use-course';
 
 // ---------------------------------------------------------------------------
 // Mock code for interactive lessons
@@ -120,7 +120,7 @@ export default function LessonPage() {
   const tn = useTranslations('nav');
 
   const { enrollment, isLoading: enrollmentLoading } = useEnrollment(courseId);
-  const selectedCourse = useCourseStore((s) => s.selectedCourse);
+  const { course } = useCourse(courseId);
 
   const [sidebarVisible, setSidebarVisible] = useState(true);
   const [, setCode] = useState(MOCK_STARTER_CODE);
@@ -139,8 +139,8 @@ export default function LessonPage() {
   }, []);
 
   // Derived state
-  const courseTitle = selectedCourse?.title ?? 'Course';
-  const lessonCount = selectedCourse?.lessonCount ?? 10;
+  const courseTitle = course?.title ?? 'Course';
+  const lessonCount = course?.lessonCount ?? 10;
   const completedLessons = enrollment?.completedLessons ?? 0;
   const isCompleted = lessonIndex < completedLessons;
   const isLastLesson = lessonIndex === lessonCount - 1;

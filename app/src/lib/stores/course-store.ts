@@ -52,14 +52,12 @@ export interface CourseWithMeta {
 export interface CourseState {
   // State
   courses: CourseWithMeta[];
-  selectedCourse: CourseWithMeta | null;
   filters: CourseFilters;
   isLoading: boolean;
   error: string | null;
 
   // Actions
   fetchCourses: (locale?: string) => Promise<void>;
-  selectCourse: (courseId: string) => void;
   setFilter: <K extends keyof CourseFilters>(key: K, value: CourseFilters[K]) => void;
   resetFilters: () => void;
   getFilteredCourses: () => CourseWithMeta[];
@@ -211,7 +209,6 @@ const DIFFICULTY_LABEL_TO_NUM: Record<Difficulty, number> = {
 export const useCourseStore = create<CourseState>()((set, get) => ({
   // Initial state
   courses: [],
-  selectedCourse: null,
   filters: { ...DEFAULT_FILTERS },
   isLoading: false,
   error: null,
@@ -228,12 +225,6 @@ export const useCourseStore = create<CourseState>()((set, get) => ({
         err instanceof Error ? err.message : 'Failed to fetch courses';
       set({ error: message, isLoading: false });
     }
-  },
-
-  selectCourse: (courseId: string) => {
-    const { courses } = get();
-    const found = courses.find((c) => c.courseId === courseId) ?? null;
-    set({ selectedCourse: found });
   },
 
   setFilter: (key, value) => {

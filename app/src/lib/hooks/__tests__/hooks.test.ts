@@ -139,6 +139,8 @@ function createDefaultCourseState() {
 
   return {
     courses,
+    // Legacy field — the real store no longer has selectedCourse. Kept only so
+    // the clobber-regression test can assert useCourse ignores it.
     selectedCourse: null as typeof courses[0] | null,
     filters: {
       track: null as string | null,
@@ -150,10 +152,6 @@ function createDefaultCourseState() {
     isLoading: false,
     error: null,
     fetchCourses: vi.fn(),
-    selectCourse: vi.fn((id: string) => {
-      mockCourseState.selectedCourse =
-        mockCourseState.courses.find((c) => c.courseId === id) ?? null;
-    }),
     setFilter: vi.fn(),
     resetFilters: vi.fn(),
     getFilteredCourses: vi.fn(() => mockCourseState.courses),
@@ -618,10 +616,7 @@ describe('useStreak', () => {
 // ===================================================================
 
 describe('useCourse', () => {
-  it('selects course by ID and returns course data', () => {
-    // Simulate selectCourse setting selectedCourse
-    mockCourseState.selectedCourse = mockCourseState.courses[0]!;
-
+  it('resolves course by ID and returns course data', () => {
     const { result } = renderHook(() => useCourse('solana-101'));
 
     expect(result.current.course).not.toBeNull();
@@ -629,8 +624,6 @@ describe('useCourse', () => {
   });
 
   it('returns enrollment data for enrolled course', () => {
-    mockCourseState.selectedCourse = mockCourseState.courses[0]!;
-
     const { result } = renderHook(() => useCourse('solana-101'));
 
     expect(result.current.isEnrolled).toBe(true);
@@ -638,18 +631,10 @@ describe('useCourse', () => {
   });
 
   it('returns null enrollment for non-enrolled course', () => {
-    mockCourseState.selectedCourse = mockCourseState.courses[1]!;
-
     const { result } = renderHook(() => useCourse('anchor-dev'));
 
     expect(result.current.isEnrolled).toBe(false);
     expect(result.current.enrollment).toBeNull();
-  });
-
-  it('calls selectCourse on mount when courseId is provided', () => {
-    renderHook(() => useCourse('solana-101'));
-
-    expect(mockCourseState.selectCourse).toHaveBeenCalledWith('solana-101');
   });
 
   it('returns null course when no courseId and none selected', () => {
@@ -657,6 +642,18 @@ describe('useCourse', () => {
 
     expect(result.current.course).toBeNull();
     expect(result.current.isEnrolled).toBe(false);
+  });
+
+  it('resolves its own course by id even when a different course is selected (prerequisite clobber regression)', () => {
+    // The course-detail page mounts two useCourse consumers — the main course
+    // AND its prerequisite card. They must not share one resolved course:
+    // here a clobbered selectedCourse points at solana-101 while this consumer
+    // asks for anchor-dev. useCourse(id) must resolve from the catalog by id.
+    mockCourseState.selectedCourse = mockCourseState.courses[0]!; // solana-101 (the clobber)
+
+    const { result } = renderHook(() => useCourse('anchor-dev'));
+
+    expect(result.current.course?.courseId).toBe('anchor-dev');
   });
 });
 

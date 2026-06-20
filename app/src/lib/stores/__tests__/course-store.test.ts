@@ -98,7 +98,6 @@ describe('useCourseStore', () => {
     // Reset store to initial state between tests
     useCourseStore.setState({
       courses: [],
-      selectedCourse: null,
       filters: {
         track: null,
         difficulty: null,
@@ -118,10 +117,6 @@ describe('useCourseStore', () => {
   describe('initial state', () => {
     it('has empty courses array', () => {
       expect(useCourseStore.getState().courses).toEqual([]);
-    });
-
-    it('has null selectedCourse', () => {
-      expect(useCourseStore.getState().selectedCourse).toBeNull();
     });
 
     it('has default filter values', () => {
@@ -196,32 +191,6 @@ describe('useCourseStore', () => {
       expect(filters.duration).toBeNull();
       expect(filters.searchQuery).toBe('');
       expect(filters.sortBy).toBe('newest');
-    });
-  });
-
-  // -------------------------------------------------------------------------
-  // selectCourse
-  // -------------------------------------------------------------------------
-
-  describe('selectCourse', () => {
-    beforeEach(() => {
-      mockFetch.mockResolvedValueOnce(makeSanityCourses());
-    });
-
-    it('sets selectedCourse when courseId matches', async () => {
-      await useCourseStore.getState().fetchCourses();
-      useCourseStore.getState().selectCourse('defi-201');
-
-      const { selectedCourse } = useCourseStore.getState();
-      expect(selectedCourse).not.toBeNull();
-      expect(selectedCourse!.courseId).toBe('defi-201');
-    });
-
-    it('sets selectedCourse to null for unknown courseId', async () => {
-      await useCourseStore.getState().fetchCourses();
-      useCourseStore.getState().selectCourse('nonexistent-999');
-
-      expect(useCourseStore.getState().selectedCourse).toBeNull();
     });
   });
 

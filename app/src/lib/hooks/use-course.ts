@@ -1,6 +1,5 @@
 'use client';
 
-import { useEffect } from 'react';
 import { useCourseStore } from '@/lib/stores/course-store';
 import type { CourseWithMeta, CourseFilters, CourseState } from '@/lib/stores/course-store';
 import { useUserStore } from '@/lib/stores/user-store';
@@ -14,36 +13,28 @@ interface UseCourseReturn {
 }
 
 /**
- * Selects a single course by ID and pairs it with the current user's
- * enrollment data for that course.
+ * Resolves a single course by ID from the loaded catalog and pairs it with
+ * the current user's enrollment for that course.
  *
- * When `courseId` is provided, the store's `selectCourse` is called on
- * mount and when the ID changes. If omitted, returns the currently
- * selected course (if any).
+ * The course is derived read-only from the store's `courses` list, so
+ * multiple consumers on the same page (e.g. a course and its prerequisite
+ * card) each resolve their OWN course without writing to — and clobbering —
+ * a shared selected-course value. Returns `null` when `courseId` is omitted
+ * or the matching course isn't loaded.
  */
 export function useCourse(courseId?: string): UseCourseReturn {
-  const selectCourse = useCourseStore((s) => s.selectCourse);
-  const selectedCourse = useCourseStore((s) => s.selectedCourse);
+  const course = useCourseStore((s) =>
+    courseId ? s.courses.find((c) => c.courseId === courseId) ?? null : null,
+  );
   const courseLoading = useCourseStore((s) => s.isLoading);
-  const coursesLength = useCourseStore((s) => s.courses.length);
 
   const enrollments = useUserStore((s) => s.enrollments);
   const userLoading = useUserStore((s) => s.isLoading);
 
-  useEffect(() => {
-    if (courseId) {
-      selectCourse(courseId);
-    }
-  }, [courseId, selectCourse, coursesLength]);
-
-  const enrollment = courseId
-    ? enrollments.get(courseId) ?? null
-    : selectedCourse
-      ? enrollments.get(selectedCourse.courseId) ?? null
-      : null;
+  const enrollment = courseId ? enrollments.get(courseId) ?? null : null;
 
   return {
-    course: selectedCourse,
+    course,
     enrollment,
     isEnrolled: enrollment !== null,
     isLoading: courseLoading || userLoading,
