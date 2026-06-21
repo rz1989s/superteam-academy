@@ -70,9 +70,9 @@ const FEATURED_COURSES: CourseCardData[] = [
 ];
 
 const DIFFICULTY_CLASS: Record<CourseCardData['difficulty'], string> = {
-  Beginner: 'bg-leaf/20 text-green-deep',
-  Intermediate: 'bg-gold/20 text-clay-deep',
-  Advanced: 'bg-rust/15 text-rust-deep',
+  Beginner: 'bg-leaf/20 text-green-deep dark:text-leaf',
+  Intermediate: 'bg-gold/20 text-clay-deep dark:text-gold',
+  Advanced: 'bg-rust/15 text-rust-deep dark:text-rust-bright',
 };
 
 export function FeaturedCourses() {
@@ -134,7 +134,7 @@ export function FeaturedCourses() {
                     )}
                     {/* XP badge */}
                     <div className="absolute right-3 top-3 flex items-center gap-1 rounded-full bg-background/90 px-2.5 py-1 text-xs font-medium backdrop-blur-sm">
-                      <Zap className="h-3 w-3 text-clay-deep" />
+                      <Zap className="h-3 w-3 text-clay-deep dark:text-gold" />
                       {course.xp.toLocaleString()} XP
                     </div>
                   </div>

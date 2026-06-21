@@ -34,7 +34,7 @@ const ACHIEVEMENT_BADGES: AchievementBadge[] = [
     title: 'First Lesson',
     description: 'Complete your first lesson',
     icon: Star,
-    color: 'text-clay-deep',
+    color: 'text-clay-deep dark:text-gold',
     bg: 'bg-gold/20',
     earned: true,
   },
@@ -42,7 +42,7 @@ const ACHIEVEMENT_BADGES: AchievementBadge[] = [
     title: 'Week Warrior',
     description: '7-day learning streak',
     icon: Flame,
-    color: 'text-clay-deep',
+    color: 'text-clay-deep dark:text-clay',
     bg: 'bg-clay/15',
     earned: true,
   },
@@ -50,7 +50,7 @@ const ACHIEVEMENT_BADGES: AchievementBadge[] = [
     title: 'DeFi Builder',
     description: 'Complete the DeFi track',
     icon: Trophy,
-    color: 'text-link',
+    color: 'text-link dark:text-skyblue',
     bg: 'bg-skyblue/10',
     earned: true,
   },
@@ -58,7 +58,7 @@ const ACHIEVEMENT_BADGES: AchievementBadge[] = [
     title: 'Bug Hunter',
     description: 'Find 5 vulnerabilities',
     icon: Shield,
-    color: 'text-rust-deep',
+    color: 'text-rust-deep dark:text-rust-bright',
     bg: 'bg-rust/15',
     earned: false,
   },
@@ -103,7 +103,7 @@ export function GamificationPreview() {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gold/15">
-                      <Zap className="h-6 w-6 text-clay-deep" />
+                      <Zap className="h-6 w-6 text-clay-deep dark:text-gold" />
                     </div>
                     <div>
                       <p className="text-2xl font-bold">{MOCK_XP.toLocaleString()} XP</p>
@@ -136,7 +136,7 @@ export function GamificationPreview() {
               <CardContent className="pt-6">
                 <div className="flex items-center gap-4">
                   <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-clay/15">
-                    <Flame className="h-6 w-6 text-clay-deep" />
+                    <Flame className="h-6 w-6 text-clay-deep dark:text-clay" />
                   </div>
                   <div className="flex-1">
                     <div className="flex items-baseline gap-2">
@@ -257,10 +257,10 @@ export function GamificationPreview() {
                       <span
                         className={`flex h-7 w-7 items-center justify-center rounded-full text-xs font-bold ${
                           entry.rank === 1
-                            ? 'bg-gold/20 text-clay-deep'
+                            ? 'bg-gold/20 text-clay-deep dark:text-gold'
                             : entry.rank === 2
-                              ? 'bg-clay/15 text-clay-deep'
-                              : 'bg-rust/15 text-rust-deep'
+                              ? 'bg-clay/15 text-clay-deep dark:text-clay'
+                              : 'bg-rust/15 text-rust-deep dark:text-rust-bright'
                         }`}
                       >
                         {entry.rank}

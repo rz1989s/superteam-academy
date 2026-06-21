@@ -93,7 +93,7 @@ export function SocialProof() {
             <ul className="mt-4 grid gap-3 sm:grid-cols-2">
               {DEMO_HIGHLIGHTS.map((item) => (
                 <li key={item} className="flex items-start gap-2.5 text-sm">
-                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-green-deep" />
+                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-green-deep dark:text-leaf" />
                   <span className="text-foreground">{item}</span>
                 </li>
               ))}

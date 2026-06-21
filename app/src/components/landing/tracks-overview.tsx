@@ -113,7 +113,7 @@ export function TracksOverview() {
                       <span className="text-xs text-muted-foreground">
                         {track.difficultyRange}
                       </span>
-                      <span className="inline-flex items-center gap-1 text-xs font-medium text-link">
+                      <span className="inline-flex items-center gap-1 text-xs font-medium text-link dark:text-skyblue">
                         Explore
                         <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
                       </span>

@@ -18,7 +18,7 @@ const STEPS: Step[] = [
     descKey: 'step_1_desc',
     icon: Wallet,
     iconBg: 'bg-skyblue/10',
-    iconColor: 'text-link',
+    iconColor: 'text-link dark:text-skyblue',
     number: 1,
   },
   {
@@ -26,7 +26,7 @@ const STEPS: Step[] = [
     descKey: 'step_2_desc',
     icon: Code2,
     iconBg: 'bg-clay/15',
-    iconColor: 'text-clay-deep',
+    iconColor: 'text-clay-deep dark:text-clay',
     number: 2,
   },
   {
@@ -34,7 +34,7 @@ const STEPS: Step[] = [
     descKey: 'step_3_desc',
     icon: Award,
     iconBg: 'bg-gold/20',
-    iconColor: 'text-clay-deep',
+    iconColor: 'text-clay-deep dark:text-gold',
     number: 3,
   },
 ];

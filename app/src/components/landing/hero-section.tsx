@@ -174,7 +174,7 @@ export function HeroSection() {
           {/* Left column: Copy + CTAs */}
           <div className="flex flex-col items-start gap-6">
             <Badge variant="secondary" className="gap-1.5 px-3 py-1 text-sm">
-              <Zap className="h-3.5 w-3.5 text-clay-deep" />
+              <Zap className="h-3.5 w-3.5 text-clay-deep dark:text-gold" />
               Powered by Solana
             </Badge>
 
@@ -282,7 +282,7 @@ export function HeroSection() {
             <div className="absolute -bottom-3 -left-3 rounded-lg border bg-card px-3 py-2 shadow-lg sm:-bottom-4 sm:-left-4">
               <div className="flex items-center gap-2">
                 <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gold/15">
-                  <Zap className="h-4 w-4 text-clay-deep" />
+                  <Zap className="h-4 w-4 text-clay-deep dark:text-gold" />
                 </div>
                 <div>
                   <p className="text-xs font-medium">+250 XP</p>
