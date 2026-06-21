@@ -23,6 +23,17 @@ describe('achievements rarity module', () => {
     }
   });
 
+  it('pairs rare/epic/legendary icon + label with a bright dark: sibling (common stays muted)', () => {
+    expect(achievementRarityStyle('rare').iconClass).toContain('dark:text-leaf');
+    expect(achievementRarityStyle('rare').textClass).toContain('dark:text-leaf');
+    expect(achievementRarityStyle('epic').iconClass).toContain('dark:text-clay');
+    expect(achievementRarityStyle('epic').textClass).toContain('dark:text-clay');
+    expect(achievementRarityStyle('legendary').iconClass).toContain('dark:text-gold');
+    expect(achievementRarityStyle('legendary').textClass).toContain('dark:text-gold');
+    expect(achievementRarityStyle('common').iconClass).not.toContain('dark:');
+    expect(achievementRarityStyle('common').textClass).not.toContain('dark:');
+  });
+
   it('escalates the ring with rarity (common has none, legendary has the strongest)', () => {
     expect(achievementRarityStyle('common').ringClass).toBe('');
     expect(achievementRarityStyle('legendary').ringClass).toContain('ring-2');

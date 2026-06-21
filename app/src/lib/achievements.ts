@@ -21,20 +21,20 @@ export const ACHIEVEMENT_RARITY_STYLES: Record<AchievementRarity, RarityStyle> =
   },
   rare: {
     badgeClass: 'bg-leaf/20',
-    iconClass: 'text-green-deep',
-    textClass: 'text-green-deep',
+    iconClass: 'text-green-deep dark:text-leaf',
+    textClass: 'text-green-deep dark:text-leaf',
     ringClass: 'ring-1 ring-leaf/40',
   },
   epic: {
     badgeClass: 'bg-clay/15',
-    iconClass: 'text-clay-deep',
-    textClass: 'text-clay-deep',
+    iconClass: 'text-clay-deep dark:text-clay',
+    textClass: 'text-clay-deep dark:text-clay',
     ringClass: 'ring-2 ring-clay/40',
   },
   legendary: {
     badgeClass: 'bg-gold/20',
-    iconClass: 'text-clay-deep',
-    textClass: 'text-clay-deep',
+    iconClass: 'text-clay-deep dark:text-gold',
+    textClass: 'text-clay-deep dark:text-gold',
     ringClass: 'ring-2 ring-gold/50',
   },
 };
