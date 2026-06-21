@@ -26,6 +26,7 @@ import {
 } from '@/components/ui/tooltip';
 import { Separator } from '@/components/ui/separator';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { useXp } from '@/lib/hooks/use-xp';
 
 interface NavItem {
   href: string;
@@ -42,19 +43,6 @@ const NAV_ITEMS: NavItem[] = [
   { href: '/profile', labelKey: 'profile', icon: User },
   { href: '/settings', labelKey: 'settings', icon: Settings2 },
 ];
-
-interface XPData {
-  currentXP: number;
-  requiredXP: number;
-  level: number;
-}
-
-// Placeholder XP data -- will be replaced with real data from on-chain state
-const MOCK_XP: XPData = {
-  currentXP: 2450,
-  requiredXP: 5000,
-  level: 7,
-};
 
 interface SidebarProps {
   collapsed?: boolean;
@@ -114,18 +102,10 @@ function SidebarNavItem({
   return linkContent;
 }
 
-function XPProgressSection({
-  xpData,
-  collapsed,
-}: {
-  xpData: XPData;
-  collapsed: boolean;
-}) {
+function XPProgressSection({ collapsed }: { collapsed: boolean }) {
   const t = useTranslations('gamification');
-  const progressPercent =
-    xpData.requiredXP > 0
-      ? Math.round((xpData.currentXP / xpData.requiredXP) * 100)
-      : 0;
+  const { xp, level, progress } = useXp();
+  const progressPercent = Math.round(progress);
 
   if (collapsed) {
     return (
@@ -133,7 +113,7 @@ function XPProgressSection({
         <TooltipTrigger asChild>
           <div className="flex flex-col items-center gap-1.5 px-2">
             <Badge variant="secondary" className="text-[10px] px-1.5">
-              {xpData.level}
+              {level}
             </Badge>
             <div className="h-12 w-1.5 rounded-full bg-primary/20 relative overflow-hidden">
               <div
@@ -146,11 +126,10 @@ function XPProgressSection({
         <TooltipContent side="right" sideOffset={8}>
           <div className="text-xs">
             <p className="font-medium">
-              {t('level')} {xpData.level}
+              {t('level')} {level}
             </p>
             <p className="text-muted-foreground">
-              {xpData.currentXP.toLocaleString()} /{' '}
-              {xpData.requiredXP.toLocaleString()} {t('xp')}
+              {xp.toLocaleString()} {t('xp')}
             </p>
           </div>
         </TooltipContent>
@@ -162,11 +141,10 @@ function XPProgressSection({
     <div className="space-y-2 rounded-lg border-2 border-brown/10 bg-card/60 p-3">
       <div className="flex items-center justify-between">
         <Badge variant="secondary" className="text-xs">
-          {t('level')} {xpData.level}
+          {t('level')} {level}
         </Badge>
         <span className="text-xs text-muted-foreground">
-          {xpData.currentXP.toLocaleString()} /{' '}
-          {xpData.requiredXP.toLocaleString()} {t('xp')}
+          {xp.toLocaleString()} {t('xp')}
         </span>
       </div>
       <Progress value={progressPercent} className="h-2" />
@@ -222,7 +200,7 @@ export function Sidebar({
       </ScrollArea>
 
       <div className={cn('border-t', collapsed ? 'px-2 py-3' : 'px-3 py-4')}>
-        <XPProgressSection xpData={MOCK_XP} collapsed={collapsed} />
+        <XPProgressSection collapsed={collapsed} />
 
         <Separator className="my-3" />
 
@@ -259,10 +237,8 @@ export function SidebarMobileContent({
   const t = useTranslations('nav');
   const tGamification = useTranslations('gamification');
   const pathname = usePathname();
-  const progressPercent =
-    MOCK_XP.requiredXP > 0
-      ? Math.round((MOCK_XP.currentXP / MOCK_XP.requiredXP) * 100)
-      : 0;
+  const { xp, level, progress } = useXp();
+  const progressPercent = Math.round(progress);
 
   return (
     <div className="flex h-full flex-col">
@@ -305,11 +281,10 @@ export function SidebarMobileContent({
         <div className="space-y-2">
           <div className="flex items-center justify-between">
             <Badge variant="secondary" className="text-xs">
-              {tGamification('level')} {MOCK_XP.level}
+              {tGamification('level')} {level}
             </Badge>
             <span className="text-xs text-muted-foreground">
-              {MOCK_XP.currentXP.toLocaleString()} /{' '}
-              {MOCK_XP.requiredXP.toLocaleString()} {tGamification('xp')}
+              {xp.toLocaleString()} {tGamification('xp')}
             </span>
           </div>
           <Progress value={progressPercent} className="h-2" />
