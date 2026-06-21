@@ -58,12 +58,12 @@ const ACTIVITY_ICON: Record<ActivityType, typeof BookOpen> = {
 };
 
 const ACTIVITY_COLOR: Record<ActivityType, string> = {
-  lesson_completed: 'text-link bg-skyblue/10',
-  course_enrolled: 'text-green-deep bg-leaf/20',
-  achievement_earned: 'text-clay-deep bg-gold/20',
-  xp_earned: 'text-clay-deep bg-gold/20',
-  streak_milestone: 'text-clay-deep bg-clay/15',
-  challenge_completed: 'text-rust-deep bg-rust/15',
+  lesson_completed: 'text-link dark:text-skyblue bg-skyblue/10',
+  course_enrolled: 'text-green-deep dark:text-leaf bg-leaf/20',
+  achievement_earned: 'text-clay-deep dark:text-gold bg-gold/20',
+  xp_earned: 'text-clay-deep dark:text-gold bg-gold/20',
+  streak_milestone: 'text-clay-deep dark:text-clay bg-clay/15',
+  challenge_completed: 'text-rust-deep dark:text-rust-bright bg-rust/15',
 };
 
 // ---------------------------------------------------------------------------

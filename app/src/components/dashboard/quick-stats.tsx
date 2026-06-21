@@ -101,23 +101,23 @@ export function QuickStats({
     <div className={cn('grid gap-4 sm:grid-cols-2 lg:grid-cols-5', className)}>
       {/* Total XP */}
       <StatCard
-        icon={<Zap className="size-5 text-clay-deep" />}
+        icon={<Zap className="size-5 text-clay-deep dark:text-gold" />}
         iconBg="bg-gold/20"
         label={t('xp')}
         value={xp.toLocaleString()}
-        accent="text-clay-deep"
+        accent="text-clay-deep dark:text-gold"
       >
         <Progress value={xpProgress} className="mt-1.5 h-1.5" />
       </StatCard>
 
       {/* Current Level */}
       <StatCard
-        icon={<Shield className="size-5 text-link" />}
+        icon={<Shield className="size-5 text-link dark:text-skyblue" />}
         iconBg="bg-skyblue/10"
         label={t('level')}
         value={level}
         sublabel={levelTitle}
-        accent="text-link"
+        accent="text-link dark:text-skyblue"
       />
 
       {/* Day Streak */}
@@ -127,7 +127,7 @@ export function QuickStats({
             className={cn(
               'size-5',
               currentStreak > 0
-                ? 'text-clay-deep'
+                ? 'text-clay-deep dark:text-clay'
                 : 'text-muted-foreground',
             )}
             fill={currentStreak > 0 ? 'currentColor' : 'none'}
@@ -142,27 +142,27 @@ export function QuickStats({
         value={currentStreak}
         accent={cn(
           currentStreak > 0
-            ? 'text-clay-deep'
+            ? 'text-clay-deep dark:text-clay'
             : 'text-muted-foreground',
         )}
       />
 
       {/* Courses Enrolled */}
       <StatCard
-        icon={<BookOpen className="size-5 text-green-deep" />}
+        icon={<BookOpen className="size-5 text-green-deep dark:text-leaf" />}
         iconBg="bg-leaf/20"
         label="Courses"
         value={enrolledCount}
-        accent="text-green-deep"
+        accent="text-green-deep dark:text-leaf"
       />
 
       {/* Leaderboard Rank */}
       <StatCard
-        icon={<Trophy className="size-5 text-rust-deep" />}
+        icon={<Trophy className="size-5 text-rust-deep dark:text-rust-bright" />}
         iconBg="bg-rust/15"
         label={tLeaderboard('rank')}
         value={rank !== null ? `#${rank}` : '—'}
-        accent="text-rust-deep"
+        accent="text-rust-deep dark:text-rust-bright"
       />
     </div>
   );

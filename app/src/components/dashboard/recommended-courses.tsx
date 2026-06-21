@@ -115,7 +115,7 @@ export function RecommendedCourses({ className }: RecommendedCoursesProps) {
                       <Clock className="size-3" />
                       {course.estimatedHours}h
                     </span>
-                    <span className="flex items-center gap-0.5 text-[10px] text-clay-deep">
+                    <span className="flex items-center gap-0.5 text-[10px] text-clay-deep dark:text-gold">
                       <Zap className="size-3" />
                       {course.xpReward} XP
                     </span>
