@@ -8,6 +8,12 @@ describe('difficulty module', () => {
     expect(difficultyClass('advanced')).toContain('text-rust-deep');
   });
 
+  it('pairs each difficulty text with a bright dark: sibling', () => {
+    expect(difficultyClass('beginner')).toContain('dark:text-leaf');
+    expect(difficultyClass('intermediate')).toContain('dark:text-gold');
+    expect(difficultyClass('advanced')).toContain('dark:text-rust-bright');
+  });
+
   it('resolves a numeric index to the same class as its level name', () => {
     DIFFICULTY_LEVELS.forEach((level, i) => {
       expect(difficultyClass(i)).toBe(difficultyClass(level));

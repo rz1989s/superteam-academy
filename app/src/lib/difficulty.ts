@@ -2,9 +2,9 @@ export const DIFFICULTY_LEVELS = ['beginner', 'intermediate', 'advanced'] as con
 export type DifficultyLevel = (typeof DIFFICULTY_LEVELS)[number];
 
 const DIFFICULTY_CLASS: Record<DifficultyLevel, string> = {
-  beginner: 'border-leaf/30 bg-leaf/20 text-green-deep',
-  intermediate: 'border-gold/30 bg-gold/20 text-clay-deep',
-  advanced: 'border-rust/30 bg-rust/15 text-rust-deep',
+  beginner: 'border-leaf/30 bg-leaf/20 text-green-deep dark:text-leaf',
+  intermediate: 'border-gold/30 bg-gold/20 text-clay-deep dark:text-gold',
+  advanced: 'border-rust/30 bg-rust/15 text-rust-deep dark:text-rust-bright',
 };
 
 /** Brand classification class for a difficulty, by level name or 0-based index. */
