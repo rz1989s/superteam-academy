@@ -7,6 +7,7 @@ import { useWallet } from "@solana/wallet-adapter-react";
 import { Link } from "@/i18n/routing";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { isDemoMode } from "@/lib/demo";
 import {
   ArrowRight,
   BookOpen,
@@ -196,7 +197,7 @@ export function HeroSection() {
                 </Link>
               </Button>
 
-              {authStatus !== "authenticated" && (
+              {!isDemoMode() && authStatus !== "authenticated" && (
                 <Button
                   variant="outline"
                   size="lg"

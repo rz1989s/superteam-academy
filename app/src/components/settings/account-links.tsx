@@ -4,6 +4,8 @@ import { useSession, signIn } from 'next-auth/react';
 import { useTranslations } from 'next-intl';
 import { useWallet } from '@solana/wallet-adapter-react';
 import { Chrome, Github, Wallet, Check, Link2 } from 'lucide-react';
+import { toast } from 'sonner';
+import { isDemoMode } from '@/lib/demo';
 import {
   Card,
   CardContent,
@@ -27,6 +29,17 @@ export function AccountLinks() {
   const { data: session } = useSession();
   const { connected: walletConnected, publicKey } = useWallet();
   const t = useTranslations('settings');
+  const tDemo = useTranslations('demo');
+
+  // OAuth is not available in the public demo; surface a friendly notice
+  // instead of navigating to the secret-less auth backend.
+  const linkOAuth = (provider: 'google' | 'github') => {
+    if (isDemoMode()) {
+      toast.info(tDemo('title'), { description: tDemo('description') });
+      return;
+    }
+    signIn(provider);
+  };
 
   const isGoogleConnected = session?.provider === 'google';
   const isGithubConnected = session?.provider === 'github';
@@ -38,7 +51,7 @@ export function AccountLinks() {
       icon: Chrome,
       connected: isGoogleConnected,
       detail: isGoogleConnected ? (session?.user?.email ?? null) : null,
-      onLink: () => signIn('google'),
+      onLink: () => linkOAuth('google'),
     },
     {
       id: 'github',
@@ -46,7 +59,7 @@ export function AccountLinks() {
       icon: Github,
       connected: isGithubConnected,
       detail: isGithubConnected ? (session?.user?.name ?? null) : null,
-      onLink: () => signIn('github'),
+      onLink: () => linkOAuth('github'),
     },
     {
       id: 'wallet',
