@@ -137,6 +137,7 @@
   /* muted-red brand accent — named 'rust' to avoid colliding with Tailwind's red-* scale */
   --color-rust: #C75A44; /* decorative fill: Security track, Advanced difficulty, podium 3rd */
   --color-rust-deep: #A23B22; /* readable muted-red TEXT on cream — 6.17:1 (AA) */
+  --color-rust-bright: #F0926F; /* dark-mode-readable Security TEXT — AA on dark --card 5.76:1 & --secondary 4.79:1 */
 }
 
 @layer base {
