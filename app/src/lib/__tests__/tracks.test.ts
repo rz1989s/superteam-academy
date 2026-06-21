@@ -17,6 +17,13 @@ describe('tracks module', () => {
     }
   });
 
+  it('pairs each track badge text with a bright dark: sibling', () => {
+    expect(getTrack('1').badgeClass).toContain('dark:text-skyblue');
+    expect(getTrack('2').badgeClass).toContain('dark:text-gold');
+    expect(getTrack('3').badgeClass).toContain('dark:text-clay');
+    expect(getTrack('4').badgeClass).toContain('dark:text-rust-bright');
+  });
+
   it('contains no off-palette color names', () => {
     expect(JSON.stringify(TRACKS)).not.toMatch(
       /violet|purple|indigo|fuchsia|pink|teal|9945FF|14F195/i,
