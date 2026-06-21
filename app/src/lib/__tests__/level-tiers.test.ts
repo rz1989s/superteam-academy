@@ -16,6 +16,20 @@ describe('level-tiers module', () => {
     }
   });
 
+  it('pairs each tier text (except newcomer) with a bright dark: sibling by fill accent', () => {
+    expect(levelTierStyle('explorer').text).toContain('dark:text-leaf');
+    expect(levelTierStyle('builder').text).toContain('dark:text-skyblue');
+    expect(levelTierStyle('developer').text).toContain('dark:text-clay');
+    expect(levelTierStyle('expert').text).toContain('dark:text-clay');
+    expect(levelTierStyle('engineer').text).toContain('dark:text-gold');
+    expect(levelTierStyle('master').text).toContain('dark:text-gold');
+    expect(levelTierStyle('grandmaster').text).toContain('dark:text-gold');
+    expect(levelTierStyle('legend').text).toContain('dark:text-gold');
+    expect(levelTierStyle('architect').text).toContain('dark:text-rust-bright');
+    expect(levelTierStyle('specialist').text).toContain('dark:text-rust-bright');
+    expect(levelTierStyle('newcomer').text).not.toContain('dark:');
+  });
+
   it('escalates the ring across prestige tiers (1-6 none, 7-8 ring-1, 9-11 ring-2, legend offset)', () => {
     expect(levelTierStyle('newcomer').ring).toBe('');
     expect(levelTierStyle('architect').ring).toBe('');
