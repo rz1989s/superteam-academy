@@ -114,7 +114,7 @@ export function AchievementBadge({
             {achievement.description}
           </p>
           {!isEarned && (
-            <p className="text-[10px] font-medium text-clay-deep">
+            <p className="text-[10px] font-medium text-clay-deep dark:text-gold">
               Keep learning to unlock this achievement
             </p>
           )}

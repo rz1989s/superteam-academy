@@ -37,9 +37,9 @@ export function StreakCounter({
             className={cn(
               'flex items-center gap-1.5 transition-colors',
               isFreezeActiveToday
-                ? 'text-link'
+                ? 'text-link dark:text-skyblue'
                 : isActive
-                  ? 'text-clay-deep'
+                  ? 'text-clay-deep dark:text-clay'
                   : 'text-muted-foreground',
             )}
           >
@@ -73,7 +73,7 @@ export function StreakCounter({
             <p>Current: {currentStreak} days</p>
             <p>Best: {longestStreak} days</p>
             {isFreezeActiveToday && (
-              <p className="text-link">{t('freeze_active')}</p>
+              <p className="text-link dark:text-skyblue">{t('freeze_active')}</p>
             )}
           </div>
         </TooltipContent>
@@ -88,7 +88,7 @@ export function StreakCounter({
               onClick={onUseFreeze}
               className={cn(
                 'flex items-center gap-1 rounded-full px-2 py-0.5',
-                'bg-skyblue/10 text-link transition-colors',
+                'bg-skyblue/10 text-link dark:text-skyblue transition-colors',
                 'hover:bg-skyblue/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-skyblue/50',
               )}
             >

@@ -107,22 +107,22 @@ export function StatsSummary({ stats, isLoading = false, className }: StatsSumma
   return (
     <div className={cn('grid grid-cols-1 gap-3 min-[360px]:grid-cols-2 lg:grid-cols-4', className)}>
       <StatItem
-        icon={<Zap className="size-4 text-clay-deep" />}
+        icon={<Zap className="size-4 text-clay-deep dark:text-gold" />}
         iconBg="bg-gold/20"
         label={t('xp')}
         value={stats.totalXp}
-        accent="text-clay-deep"
+        accent="text-clay-deep dark:text-gold"
       >
         <Progress value={stats.xpProgress} className="mt-1 h-1.5" />
       </StatItem>
 
       <StatItem
-        icon={<Shield className="size-4 text-link" />}
+        icon={<Shield className="size-4 text-link dark:text-skyblue" />}
         iconBg="bg-skyblue/10"
         label={t('level')}
         value={stats.level}
         sublabel={stats.levelTitle}
-        accent="text-link"
+        accent="text-link dark:text-skyblue"
       />
 
       <StatItem
@@ -131,7 +131,7 @@ export function StatsSummary({ stats, isLoading = false, className }: StatsSumma
             className={cn(
               'size-4',
               stats.currentStreak > 0
-                ? 'text-clay-deep'
+                ? 'text-clay-deep dark:text-clay'
                 : 'text-muted-foreground',
             )}
             fill={stats.currentStreak > 0 ? 'currentColor' : 'none'}
@@ -147,54 +147,54 @@ export function StatsSummary({ stats, isLoading = false, className }: StatsSumma
         sublabel={`Best: ${stats.longestStreak} days`}
         accent={cn(
           stats.currentStreak > 0
-            ? 'text-clay-deep'
+            ? 'text-clay-deep dark:text-clay'
             : 'text-muted-foreground',
         )}
       />
 
       <StatItem
-        icon={<BookOpen className="size-4 text-green-deep" />}
+        icon={<BookOpen className="size-4 text-green-deep dark:text-leaf" />}
         iconBg="bg-leaf/20"
         label="Enrolled"
         value={stats.coursesEnrolled}
         sublabel={`${stats.coursesInProgress} in progress`}
-        accent="text-green-deep"
+        accent="text-green-deep dark:text-leaf"
       />
 
       <StatItem
-        icon={<CheckCircle2 className="size-4 text-green-deep" />}
+        icon={<CheckCircle2 className="size-4 text-green-deep dark:text-leaf" />}
         iconBg="bg-leaf/20"
         label="Completed"
         value={stats.coursesCompleted}
         sublabel="courses"
-        accent="text-green-deep"
+        accent="text-green-deep dark:text-leaf"
       />
 
       <StatItem
-        icon={<Target className="size-4 text-link" />}
+        icon={<Target className="size-4 text-link dark:text-skyblue" />}
         iconBg="bg-skyblue/10"
         label="Lessons"
         value={stats.lessonsCompleted}
         sublabel="completed"
-        accent="text-link"
+        accent="text-link dark:text-skyblue"
       />
 
       <StatItem
-        icon={<Award className="size-4 text-clay-deep" />}
+        icon={<Award className="size-4 text-clay-deep dark:text-clay" />}
         iconBg="bg-clay/15"
         label="Credentials"
         value={stats.credentialsEarned}
         sublabel="on-chain NFTs"
-        accent="text-clay-deep"
+        accent="text-clay-deep dark:text-clay"
       />
 
       <StatItem
-        icon={<Trophy className="size-4 text-rust-deep" />}
+        icon={<Trophy className="size-4 text-rust-deep dark:text-rust-bright" />}
         iconBg="bg-rust/15"
         label="Achievements"
         value={stats.achievementCount}
         sublabel="unlocked"
-        accent="text-rust-deep"
+        accent="text-rust-deep dark:text-rust-bright"
       />
     </div>
   );

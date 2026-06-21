@@ -92,13 +92,13 @@ export function AchievementToast({ name, xpReward, icon, onDismiss }: Achievemen
 
         {/* Text */}
         <div className="min-w-0 flex-1">
-          <p className="text-xs font-semibold uppercase tracking-wider text-clay-deep">
+          <p className="text-xs font-semibold uppercase tracking-wider text-clay-deep dark:text-gold">
             Achievement Unlocked
           </p>
           <p className="truncate text-sm font-bold text-brown">
             {name}
           </p>
-          <p className="text-xs tabular-nums text-clay-deep">
+          <p className="text-xs tabular-nums text-clay-deep dark:text-gold">
             +{xpReward.toLocaleString()} XP
           </p>
         </div>

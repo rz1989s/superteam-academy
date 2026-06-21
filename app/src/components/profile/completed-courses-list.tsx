@@ -35,7 +35,7 @@ function CompletedCourseCard({ course, enrollment, credential }: CompletedCourse
     <div className="group flex flex-col gap-3 rounded-lg border bg-card p-4 transition-shadow hover:shadow-md sm:flex-row sm:items-center">
       {/* Course image placeholder */}
       <div className="flex size-14 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-skyblue/20 to-skyblue/5">
-        <BookOpen className="size-6 text-link" />
+        <BookOpen className="size-6 text-link dark:text-skyblue" />
       </div>
 
       {/* Course info */}
@@ -65,7 +65,7 @@ function CompletedCourseCard({ course, enrollment, credential }: CompletedCourse
             href={explorerUrl!}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-md border border-clay/30 bg-clay/15 px-3 py-1.5 text-xs font-medium text-clay-deep transition-colors hover:bg-clay/25"
+            className="inline-flex items-center gap-1.5 rounded-md border border-clay/30 bg-clay/15 px-3 py-1.5 text-xs font-medium text-clay-deep dark:text-clay transition-colors hover:bg-clay/25"
           >
             <Award className="size-3.5" />
             Credential

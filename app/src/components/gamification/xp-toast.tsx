@@ -82,13 +82,13 @@ export function XpToast({ amount }: XpToastProps) {
       <div className="flex flex-col gap-0.5">
         <span
           className={cn(
-            'text-lg font-bold tabular-nums tracking-tight text-clay-deep motion-reduce:animate-none',
+            'text-lg font-bold tabular-nums tracking-tight text-clay-deep dark:text-gold motion-reduce:animate-none',
             phase === 'visible' && 'animate-scale-bounce',
           )}
         >
           +{amount.toLocaleString()} XP
         </span>
-        <span className="text-xs text-clay-deep">
+        <span className="text-xs text-clay-deep dark:text-gold">
           Lesson completed
         </span>
       </div>
