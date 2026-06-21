@@ -2,6 +2,7 @@ import { describe, it, expect } from 'vitest';
 import {
   challengeCategoryStyle,
   CHALLENGE_CATEGORY_STYLES,
+  type ChallengeCategory,
 } from '../challenge-categories';
 
 describe('challenge-categories module', () => {
@@ -19,6 +20,20 @@ describe('challenge-categories module', () => {
     for (const c of Object.values(CHALLENGE_CATEGORY_STYLES)) {
       expect(c.badgeClass).toMatch(/text-(link|clay-deep|rust-deep|green-deep)/);
       expect(c.statClass).toMatch(/text-(link|clay-deep|rust-deep|green-deep)/);
+    }
+  });
+
+  it('pairs each category badge + stat text with a bright dark: sibling', () => {
+    const expected: Record<ChallengeCategory, string> = {
+      'solana-fundamentals': 'dark:text-skyblue',
+      defi: 'dark:text-gold',
+      'nft-metaplex': 'dark:text-clay',
+      security: 'dark:text-rust-bright',
+      'token-extensions': 'dark:text-leaf',
+    };
+    for (const [cat, dark] of Object.entries(expected)) {
+      expect(challengeCategoryStyle(cat).badgeClass).toContain(dark);
+      expect(challengeCategoryStyle(cat).statClass).toContain(dark);
     }
   });
 

@@ -17,28 +17,28 @@ interface CategoryStyle {
 export const CHALLENGE_CATEGORY_STYLES: Record<ChallengeCategory, CategoryStyle> = {
   'solana-fundamentals': {
     borderClass: 'border-l-skyblue',
-    badgeClass: 'bg-skyblue/10 text-link',
-    statClass: 'text-link',
+    badgeClass: 'bg-skyblue/10 text-link dark:text-skyblue',
+    statClass: 'text-link dark:text-skyblue',
   },
   defi: {
     borderClass: 'border-l-gold',
-    badgeClass: 'bg-gold/20 text-clay-deep',
-    statClass: 'text-clay-deep',
+    badgeClass: 'bg-gold/20 text-clay-deep dark:text-gold',
+    statClass: 'text-clay-deep dark:text-gold',
   },
   'nft-metaplex': {
     borderClass: 'border-l-clay',
-    badgeClass: 'bg-clay/15 text-clay-deep',
-    statClass: 'text-clay-deep',
+    badgeClass: 'bg-clay/15 text-clay-deep dark:text-clay',
+    statClass: 'text-clay-deep dark:text-clay',
   },
   security: {
     borderClass: 'border-l-rust',
-    badgeClass: 'bg-rust/15 text-rust-deep',
-    statClass: 'text-rust-deep',
+    badgeClass: 'bg-rust/15 text-rust-deep dark:text-rust-bright',
+    statClass: 'text-rust-deep dark:text-rust-bright',
   },
   'token-extensions': {
     borderClass: 'border-l-leaf',
-    badgeClass: 'bg-leaf/20 text-green-deep',
-    statClass: 'text-green-deep',
+    badgeClass: 'bg-leaf/20 text-green-deep dark:text-leaf',
+    statClass: 'text-green-deep dark:text-leaf',
   },
 };
 
