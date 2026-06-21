@@ -3,6 +3,7 @@
 import { useCallback, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { CheckCircle2, Loader2, ArrowRight, Trophy } from 'lucide-react';
+import { toast } from 'sonner';
 import { useRouter } from '@/i18n/routing';
 import { Button } from '@/components/ui/button';
 import { useEnrollment } from '@/lib/hooks/use-enrollment';
@@ -10,6 +11,7 @@ import { useStreak } from '@/lib/hooks/use-streak';
 import { XpToast } from '@/components/gamification/xp-toast';
 import { ConfettiAnimation } from '@/components/gamification/confetti-animation';
 import { LessonCompleteAnimation } from '@/components/gamification/lesson-complete-animation';
+import { isDemoMode } from '@/lib/demo';
 import { cn } from '@/lib/utils';
 
 // ---------------------------------------------------------------------------
@@ -45,6 +47,7 @@ export function LessonCompleteButton({
   className,
 }: LessonCompleteButtonProps) {
   const t = useTranslations('lesson');
+  const tDemo = useTranslations('demo');
   const router = useRouter();
   const { completeLesson, isLoading } = useEnrollment(courseId);
   const { recordActivity } = useStreak();
@@ -57,6 +60,11 @@ export function LessonCompleteButton({
 
   const handleComplete = useCallback(async () => {
     if (isCompleted || isLoading) return;
+
+    if (isDemoMode()) {
+      toast.info(tDemo('title'), { description: tDemo('description') });
+      return;
+    }
 
     setError(null);
 
@@ -93,6 +101,7 @@ export function LessonCompleteButton({
     isLastLesson,
     courseId,
     router,
+    tDemo,
   ]);
 
   return (

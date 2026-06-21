@@ -14,6 +14,7 @@ import { toast } from 'sonner';
 import { Link } from '@/i18n/routing';
 import { Button } from '@/components/ui/button';
 import { useEnrollment } from '@/lib/hooks/use-enrollment';
+import { isDemoMode } from '@/lib/demo';
 import { cn } from '@/lib/utils';
 
 // ---------------------------------------------------------------------------
@@ -39,6 +40,7 @@ export function EnrollButton({
 }: EnrollButtonProps) {
   const t = useTranslations('courses');
   const tCommon = useTranslations('common');
+  const tDemo = useTranslations('demo');
   const { connected } = useWallet();
   const { enrollment, isEnrolled, enroll, isLoading } =
     useEnrollment(courseId);
@@ -46,6 +48,10 @@ export function EnrollButton({
   const isFinalized = enrollment?.isFinalized ?? false;
 
   const handleEnroll = useCallback(async () => {
+    if (isDemoMode()) {
+      toast.info(tDemo('title'), { description: tDemo('description') });
+      return;
+    }
     try {
       await enroll(prerequisiteCourseId ?? undefined);
       toast.success(t('enroll_success'), {
@@ -56,7 +62,7 @@ export function EnrollButton({
         err instanceof Error ? err.message : 'Enrollment failed';
       toast.error(t('enroll_error'), { description: message });
     }
-  }, [enroll, prerequisiteCourseId, t]);
+  }, [enroll, prerequisiteCourseId, t, tDemo]);
 
   // State: no wallet connected
   if (!connected) {

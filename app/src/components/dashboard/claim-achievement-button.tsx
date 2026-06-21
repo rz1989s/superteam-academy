@@ -16,6 +16,7 @@ import {
   explorerTxUrl,
 } from '@/lib/solana/claim-achievement';
 import { CLUSTER } from '@/lib/solana/constants';
+import { isDemoMode } from '@/lib/demo';
 
 interface ClaimAchievementButtonProps {
   achievementId: string;
@@ -42,11 +43,16 @@ export function ClaimAchievementButton({
   const { publicKey, signTransaction, connected } = useWallet();
   const { connection } = useConnection();
   const t = useTranslations('dashboard');
+  const tDemo = useTranslations('demo');
 
   const [isLoading, setIsLoading] = useState(false);
   const [txSignature, setTxSignature] = useState<string | null>(null);
 
   const handleClaim = useCallback(async () => {
+    if (isDemoMode()) {
+      toast.info(tDemo('title'), { description: tDemo('description') });
+      return;
+    }
     if (!publicKey || !signTransaction) return;
 
     setIsLoading(true);
@@ -90,7 +96,7 @@ export function ClaimAchievementButton({
     } finally {
       setIsLoading(false);
     }
-  }, [publicKey, signTransaction, connection, achievementId, t]);
+  }, [publicKey, signTransaction, connection, achievementId, t, tDemo]);
 
   if (!earned || !connected) return null;
 

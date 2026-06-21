@@ -1,4 +1,8 @@
 {
+  "demo": {
+    "title": "Modo demonstração",
+    "description": "O login e as ações on-chain estão desativados nesta demonstração."
+  },
   "common": {
     "connect_wallet": "Conectar Carteira",
     "loading": "Carregando...",

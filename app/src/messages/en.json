@@ -1,4 +1,8 @@
 {
+  "demo": {
+    "title": "Demo mode",
+    "description": "Sign-in and on-chain actions are disabled in this demo."
+  },
   "common": {
     "connect_wallet": "Connect Wallet",
     "loading": "Loading...",

@@ -1,4 +1,8 @@
 {
+  "demo": {
+    "title": "Modo demostración",
+    "description": "El inicio de sesión y las acciones on-chain están deshabilitados en esta demostración."
+  },
   "common": {
     "connect_wallet": "Conectar Billetera",
     "loading": "Cargando...",
