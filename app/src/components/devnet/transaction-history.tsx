@@ -44,7 +44,7 @@ const EVENT_CONFIG: Record<ProgramEventType, {
   CourseFinalized: {
     icon: GraduationCap,
     label: 'Course Finalized',
-    color: 'text-link',
+    color: 'text-link dark:text-skyblue',
     bgColor: 'bg-skyblue/15',
   },
   CredentialIssued: {

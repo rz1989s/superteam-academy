@@ -51,7 +51,7 @@ export function CourseCard({ course, enrollment }: CourseCardProps) {
           )}
           {/* XP pill */}
           <div className="absolute top-3 right-3 flex items-center gap-1 rounded-full bg-background/90 px-2.5 py-1 text-xs font-medium backdrop-blur-sm">
-            <Sparkles className="size-3 text-clay-deep" />
+            <Sparkles className="size-3 text-clay-deep dark:text-gold" />
             <span className="tabular-nums">{course.totalXp.toLocaleString()}</span>
           </div>
           {/* Completion badge (emerald = status, kept) */}

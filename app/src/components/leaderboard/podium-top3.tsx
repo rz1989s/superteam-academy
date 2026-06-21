@@ -48,7 +48,7 @@ const PODIUM_CONFIG = {
     iconColor: "text-gold",
     iconSize: "size-6",
     label: "1st",
-    labelColor: "text-clay-deep",
+    labelColor: "text-clay-deep dark:text-gold",
     orderClass: "order-1 sm:order-2",
   },
   2: {
@@ -62,7 +62,7 @@ const PODIUM_CONFIG = {
     iconColor: "text-clay",
     iconSize: "size-5",
     label: "2nd",
-    labelColor: "text-clay-deep",
+    labelColor: "text-clay-deep dark:text-clay",
     orderClass: "order-2 sm:order-1",
   },
   3: {
@@ -76,7 +76,7 @@ const PODIUM_CONFIG = {
     iconColor: "text-rust",
     iconSize: "size-5",
     label: "3rd",
-    labelColor: "text-rust-deep",
+    labelColor: "text-rust-deep dark:text-rust-bright",
     orderClass: "order-3 sm:order-3",
   },
 } as const;

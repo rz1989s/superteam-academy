@@ -45,17 +45,17 @@ const LESSON_TYPE_CONFIG: Record<
   theory: {
     icon: BookOpen,
     label: 'Theory',
-    className: 'border-skyblue/25 bg-skyblue/10 text-link',
+    className: 'border-skyblue/25 bg-skyblue/10 text-link dark:text-skyblue',
   },
   code: {
     icon: Code2,
     label: 'Code',
-    className: 'border-leaf/30 bg-leaf/20 text-green-deep',
+    className: 'border-leaf/30 bg-leaf/20 text-green-deep dark:text-leaf',
   },
   quiz: {
     icon: HelpCircle,
     label: 'Quiz',
-    className: 'border-gold/30 bg-gold/20 text-clay-deep',
+    className: 'border-gold/30 bg-gold/20 text-clay-deep dark:text-gold',
   },
 };
 

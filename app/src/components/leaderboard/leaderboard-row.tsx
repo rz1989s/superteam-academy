@@ -99,7 +99,7 @@ export function LeaderboardRow({ entry, isCurrentUser }: LeaderboardRowProps) {
       <TableCell className="hidden sm:table-cell">
         {(entry.streak ?? 0) > 0 ? (
           <div className="flex items-center gap-1">
-            <Flame className="size-4 text-clay-deep" />
+            <Flame className="size-4 text-clay-deep dark:text-clay" />
             <span className="text-sm font-medium tabular-nums">
               {entry.streak}
             </span>
