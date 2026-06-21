@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { Link, usePathname } from '@/i18n/routing';
 import { cn } from '@/lib/utils';
+import { isDemoMode } from '@/lib/demo';
 import { Button } from '@/components/ui/button';
 import {
   Sheet,
@@ -112,9 +113,11 @@ export function MobileNav() {
           <LanguageSwitcher />
         </div>
 
-        <div className="px-4">
-          <SignInMenu />
-        </div>
+        {!isDemoMode() && (
+          <div className="px-4">
+            <SignInMenu />
+          </div>
+        )}
 
         <div className="mt-auto px-4 pb-4">
           <WalletConnectButton fullWidth />

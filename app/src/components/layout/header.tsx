@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { Link, usePathname } from '@/i18n/routing';
 import { cn } from '@/lib/utils';
+import { isDemoMode } from '@/lib/demo';
 import { ThemeToggle } from '@/components/ui/theme-toggle';
 import { LanguageSwitcher } from '@/components/layout/language-switcher';
 import { MobileNav } from '@/components/layout/mobile-nav';
@@ -80,7 +81,7 @@ export function Header() {
         <div className="hidden items-center gap-2 md:flex">
           <ThemeToggle />
           <LanguageSwitcher />
-          <SignInMenu />
+          {!isDemoMode() && <SignInMenu />}
           <WalletConnectButton />
         </div>
 
